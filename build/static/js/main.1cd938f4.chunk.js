@@ -1,0 +1,2 @@
+(this.webpackJsonpfrontend=this.webpackJsonpfrontend||[]).push([[0],{10:function(n,t,e){"use strict";e.r(t);var c=e(1),r=e.n(c),o=e(3),s=e.n(o),i=(e(8),e(0));function d(){return Object(i.jsx)("h1",{children:"TRIVIA GAME under construction"})}s.a.render(Object(i.jsx)(r.a.StrictMode,{children:Object(i.jsx)(d,{})}),document.getElementById("root"))},8:function(n,t,e){}},[[10,1,2]]]);
+//# sourceMappingURL=main.1cd938f4.chunk.js.map
