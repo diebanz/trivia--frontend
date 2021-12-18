@@ -2,6 +2,6 @@ import './App.css';
 
 export default function App() {
   return (
-    <h1>TRIVIA GAME under construction</h1>
+    <h1>TRIVIA GAME test</h1>
   );
 }
