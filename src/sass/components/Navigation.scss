@@ -1,0 +1,14 @@
+.navi {
+    width: 100vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.navigation {
+    &__list {
+        &--link {
+            margin-bottom: 5rem;
+        }
+    }
+}
