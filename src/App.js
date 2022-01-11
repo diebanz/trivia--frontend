@@ -1,14 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 
 import "./sass/app.scss";
 
+import { useAuth } from "./context/loginContext";
 import Navigation from "./components/Navigation";
 import Achievements from "./pages/Achievements";
 import UserProfile from "./pages/UserProfile";
 import LogIn from "./pages/LogIn";
 
 function App() {
+    const [isLoggedIn] = useAuth();
     return (
         <Router>
             <main>
@@ -22,7 +24,8 @@ function App() {
                             </>
                         }
                     ></Route>
-                    <Route
+                    {isLoggedIn &&
+                        <Route
                         exact
                         path="/achievements"
                         element={
@@ -30,8 +33,9 @@ function App() {
                                 <Achievements />
                             </>
                         }
-                    ></Route>
-                    <Route
+                    ></Route>}
+                    {isLoggedIn &&
+                        <Route
                         exact
                         path="/userprofile"
                         element={
@@ -39,8 +43,9 @@ function App() {
                                 <UserProfile />
                             </>
                         }
-                    ></Route>
-                    <Route
+                    ></Route>}
+                    {!isLoggedIn &&
+                        <Route
                         exact
                         path="/login"
                         element={
@@ -48,7 +53,11 @@ function App() {
                                 <LogIn />
                             </>
                         }
-                    ></Route>
+                    ></Route>}
+                    <Route
+                        path="*"
+                        element={<Navigate to="/" />}
+                    />
                 </Routes>
             </main>
         </Router>
