@@ -1,7 +1,11 @@
 import React from "react";
 
-function LogInButton() {
-    return <button type="submit">Log in</button>;
+function Button({ title }) {
+    return (
+        <button className="btn" type="submit">
+            {title}
+        </button>
+    );
 }
 
-export default LogInButton;
+export default Button;

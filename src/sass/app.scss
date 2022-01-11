@@ -1,7 +1,13 @@
 @import "./variables";
 @import "./typography";
 @import "./base";
+@import "./utilities";
 
 @import "./components/Navigation.scss";
 @import "./components/Footer.scss";
+
+@import "./pages/Home.scss";
+
 @import "./common/LogInSquare.scss";
+@import "./common/AboutSquare.scss";
+@import "./common/Button.scss";

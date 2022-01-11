@@ -1,12 +1,25 @@
 .heading {
-    &__1 {
+    font-weight: 400;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+
+    s &__1 {
+        font-size: 5rem;
     }
     &__2 {
+        font-size: 2.5rem;
+        color: $color__primary--light;
+        letter-spacing: 2px;
     }
     &__3 {
+        font-size: 2.3rem;
+        color: $color__primary--light;
+        letter-spacing: 2px;
     }
+
     &__4 {
-    }
-    &__5 {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
     }
 }

@@ -9,8 +9,8 @@ import {
 import "./sass/app.scss";
 
 import { useAuth } from "./context/loginContext";
-import Navigation from "./components/Navigation";
-import Footer from "./components/Footer";
+
+import Home from "./pages/Home";
 import Achievements from "./pages/Achievements";
 import UserProfile from "./pages/UserProfile";
 import LogIn from "./pages/LogIn";
@@ -26,8 +26,7 @@ function App() {
                         path="/"
                         element={
                             <>
-                                <Navigation />
-                                <Footer />
+                                <Home />
                             </>
                         }
                     ></Route>

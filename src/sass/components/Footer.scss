@@ -4,4 +4,11 @@ footer {
     background-color: $color__primary--light;
     position: fixed;
     bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer h4 {
+    margin-left: 1rem;
 }
