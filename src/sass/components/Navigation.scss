@@ -1,5 +1,6 @@
 .navi {
-    width: 100vh;
+    width: 98%;
+    margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -7,8 +8,10 @@
 
 .navigation {
     &__list {
+        list-style: none;
+
         &--link {
-            margin-bottom: 5rem;
+            margin-bottom: 4rem;
         }
     }
 }
