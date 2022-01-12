@@ -1,12 +1,9 @@
-@import "./variables";
+@import "./reset";
 @import "./typography";
 @import "./base";
-@import "./utilities";
+@import "./config.scss";
 
-@import "./components/Navigation.scss";
 @import "./components/Footer.scss";
-
-@import "./pages/Home.scss";
 
 @import "./common/LogInSquare.scss";
 @import "./common/AboutSquare.scss";
