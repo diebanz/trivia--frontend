@@ -13,10 +13,7 @@ import styles from "./../sass/common/Button.module.scss";
 
 function Home(props) {
     const [title1, setTitle1] = useState("Play!");
-    const [title2, setTitle2] = useState("Log in!");
-
-    console.log(title1);
-    console.log(title2);
+    const [title2, setTitle2] = useState("Log in");
 
     const titles = [
         ["Just messing around...", "Getting serious, roar!"],
@@ -27,8 +24,18 @@ function Home(props) {
         ["Look at the top", "Be on the top!"],
     ];
 
-    const hoverHandler = (props) => {
-        setTitle1("");
+    const mouseEnterHandlerLeft = () => {
+        setTitle1(titles[Math.floor(Math.random() * 6)][0]);
+    };
+    const mouseEnterHandlerRight = () => {
+        setTitle2(titles[Math.floor(Math.random() * 6)][1]);
+    };
+
+    const mouseLeaveHandlerLeft = () => {
+        setTitle1("Play!");
+    };
+    const mouseLeaveHandlerRight = () => {
+        setTitle2("Log In");
     };
 
     return (
@@ -44,16 +51,17 @@ function Home(props) {
                         <Button
                             className={styles.btn__blue}
                             type="submit"
-                            onMouseEnter={hoverHandler}
-                            // title={titles[Math.floor(Math.random() * 6)][0]}
-                            title1="PLAY!"
+                            onMouseEnter={mouseEnterHandlerLeft}
+                            onMouseLeave={mouseLeaveHandlerLeft}
+                            title1={title1}
                         />
                     </Link>
                     <Link to="/login">
                         <Button
+                            onMouseEnter={mouseEnterHandlerRight}
+                            onMouseLeave={mouseLeaveHandlerRight}
                             type="submit"
-                            // title={titles[Math.floor(Math.random() * 6)][1]}
-                            title2="Log in"
+                            title2={title2}
                         />
                     </Link>
                 </div>
