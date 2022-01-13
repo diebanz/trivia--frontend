@@ -1,14 +1,15 @@
 import React from "react";
 import Button from "../common/Button";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import FadeOut from "../common/FadeOut";
 
 import classes from "./../sass/pages/LogIn.scss";
+import Card from "../common/Card";
 
 function LogIn() {
     return (
         <div>
-            <div className="login__fadeout"></div>
-            <div className="container">
+            <Card>
                 <form>
                     <label htmlFor="">Your email</label>
                     <input type="text" />
@@ -22,7 +23,8 @@ function LogIn() {
                         <FaGithub />
                     </div>
                 </div>
-            </div>
+            </Card>
+            <FadeOut />
         </div>
     );
 }

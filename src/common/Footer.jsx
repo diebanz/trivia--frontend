@@ -1,4 +1,5 @@
 import React from "react";
+
 import Square from "./Square";
 import { Link } from "react-router-dom";
 
@@ -11,9 +12,6 @@ function Footer() {
                 All rights reserved | 2022 Berlin
             </h4>
             <div className={classes.footer__squares}>
-                <Link to="/">
-                    <Square title="Home" />{" "}
-                </Link>
                 <Link to="/about">
                     <Square title="About us" />{" "}
                 </Link>
