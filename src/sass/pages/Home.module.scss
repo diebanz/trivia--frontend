@@ -6,6 +6,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    &__buttons {
+        display: flex;
+    }
 }
 
 h1 {
