@@ -1,4 +1,6 @@
-footer {
+@import "./../config.scss";
+
+.footer {
     width: 100%;
     height: 3rem;
     background-color: $color__primary--light;
@@ -7,6 +9,13 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    &__squares {
+        display: flex;
+        position: absolute;
+        bottom: 2rem;
+        right: 1rem;
+    }
 }
 
 footer h4 {

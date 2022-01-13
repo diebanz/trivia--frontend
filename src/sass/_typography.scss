@@ -6,9 +6,13 @@
     text-align: center;
     text-transform: uppercase;
 
-    s &__1 {
-        font-size: 5rem;
+    &__1 {
+        font-size: 6rem;
+        color: $color__secondary--light;
+        letter-spacing: 5px;
+        font-weight: 700;
     }
+
     &__2 {
         font-size: 2.5rem;
         color: $color__primary--light;

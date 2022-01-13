@@ -1,5 +1,4 @@
 import React from "react";
-import LogInSquare from "../common/LogInSquare";
 import { Link } from "react-router-dom";
 
 import classes from "./../sass/components/Navigation.module.scss";
@@ -55,7 +54,6 @@ function Navigation() {
                     </li>
                 </ul>
             </div>
-            <LogInSquare />
         </div>
     );
 }

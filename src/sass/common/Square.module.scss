@@ -1,6 +1,9 @@
-.login__square {
-    width: 8rem;
-    height: 8rem;
+@import "./../config.scss";
+
+.square {
+    width: 12rem;
+    height: 12rem;
+    margin: 1rem;
 
     background: linear-gradient(
         201.5deg,
@@ -9,7 +12,7 @@
     );
     box-shadow: 4px -4px 2rem 2px $color__primary;
     transform: rotate(45deg);
-    margin: 2rem;
+
     border: 1px solid rgba($color__primary--light, 0.4);
 
     display: flex;
@@ -22,8 +25,7 @@
     }
 }
 
-.login__icon {
+.square h2 {
     transform: rotate(-45deg);
-    font-size: 4rem;
-    color: $color__primary--light;
+    color: $color__secondary--light;
 }

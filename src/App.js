@@ -14,6 +14,7 @@ import Home from "./pages/Home";
 import Achievements from "./pages/Achievements";
 import UserProfile from "./pages/UserProfile";
 import LogIn from "./pages/LogIn";
+import Warning from "./pages/Warning";
 
 function App() {
     const [isLoggedIn] = useAuth();
@@ -41,17 +42,17 @@ function App() {
                             }
                         ></Route>
                     )}
-                    {isLoggedIn && (
-                        <Route
-                            exact
-                            path="/userprofile"
-                            element={
-                                <>
-                                    <UserProfile />
-                                </>
-                            }
-                        ></Route>
-                    )}
+                    {/* {isLoggedIn && ( */}
+                    <Route
+                        exact
+                        path="/userprofile"
+                        element={
+                            <>
+                                <UserProfile />
+                            </>
+                        }
+                    ></Route>
+                    {/* )} */}
                     {!isLoggedIn && (
                         <Route
                             exact
@@ -59,6 +60,17 @@ function App() {
                             element={
                                 <>
                                     <LogIn />
+                                </>
+                            }
+                        ></Route>
+                    )}
+                    {!isLoggedIn && (
+                        <Route
+                            exact
+                            path="/warning"
+                            element={
+                                <>
+                                    <Warning />
                                 </>
                             }
                         ></Route>

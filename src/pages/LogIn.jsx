@@ -1,6 +1,8 @@
 import React from "react";
-import LogInButton from "../common/LogInButton";
+import Button from "../common/Button";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+
+import classes from "./../sass/pages/LogIn.scss";
 
 function LogIn() {
     return (
@@ -10,7 +12,7 @@ function LogIn() {
                 <form>
                     <label htmlFor="">Your email</label>
                     <input type="text" />
-                    <LogInButton />
+                    <Button />
                 </form>
                 <div className="login__socials">
                     <div>
