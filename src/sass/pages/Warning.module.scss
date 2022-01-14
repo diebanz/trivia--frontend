@@ -2,9 +2,20 @@
 
 .warning {
     &__text {
+        padding: 3rem;
     }
 
     &__buttons {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        & p {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: $color__primary--dark;
+        }
     }
 
     &__icon {
@@ -13,5 +24,23 @@
         position: absolute;
         top: 2rem;
         right: 2rem;
+    }
+
+    &__span {
+        text-decoration-line: line-through;
+        text-transform: uppercase;
+
+        &--red {
+            color: #910a0a;
+        }
+        &--gold {
+            color: gold;
+            text-decoration-line: line-through;
+            text-transform: uppercase;
+        }
+    }
+
+    & h3 {
+        margin-bottom: 2rem;
     }
 }
