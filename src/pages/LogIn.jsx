@@ -8,6 +8,8 @@ import Card from "../common/Card";
 import classes from "./../sass/pages/LogIn.module.scss";
 
 function LogIn() {
+    /* Email verification ?? */
+
     return (
         <div>
             <Card>
