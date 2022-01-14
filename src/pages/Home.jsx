@@ -11,15 +11,15 @@ import Button from "../common/Button";
 import classes from "./../sass/pages/Home.module.scss";
 import styles from "./../sass/common/Button.module.scss";
 
-function Home(props) {
+function Home() {
     const [title1, setTitle1] = useState("Play!");
     const [title2, setTitle2] = useState("Log in");
 
     const titles = [
         ["Just messing around...", "Getting serious, roar!"],
-        ["Be sweet! Be cute!", "Be aggressive! Be Brutal!"],
+        ["Be sweet! Be cute!", "Be aggressive!"],
         ["Flower power", "Kill them all!"],
-        ["Everyone's a winner", "The Winner takes it aaaall!"],
+        ["Everyone's a winner", "The one and only!"],
         ["Relax, take it easy!", "Under pressure"],
         ["Look at the top", "Be on the top!"],
     ];

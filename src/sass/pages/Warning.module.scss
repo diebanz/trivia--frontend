@@ -1,1 +1,17 @@
 @import "./../config.scss";
+
+.warning {
+    &__text {
+    }
+
+    &__buttons {
+    }
+
+    &__icon {
+        font-size: 3rem;
+        color: $color__secondary--dark;
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+    }
+}
