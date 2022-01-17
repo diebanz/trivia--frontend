@@ -1,10 +1,11 @@
 import React from "react";
+
 import { motion, AnimatePresence } from "framer-motion";
 import { FaSignInAlt } from "react-icons/fa";
 
-import classes from "./../sass/common/LogInSquare.module.scss";
+import classes from "./../../sass/components/UserProfile/LogOutSquare.module.scss";
 
-function LogInSquare() {
+function LogOutSquare() {
     return (
         <div>
             <AnimatePresence>
@@ -22,4 +23,4 @@ function LogInSquare() {
     );
 }
 
-export default LogInSquare;
+export default LogOutSquare;

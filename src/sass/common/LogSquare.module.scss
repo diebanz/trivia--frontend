@@ -29,3 +29,9 @@
     font-size: 4rem;
     color: $color__primary--light;
 }
+
+.logout__icon {
+    transform: rotate(135deg);
+    font-size: 4rem;
+    color: $color__warning;
+}

@@ -20,7 +20,7 @@ function Navigation() {
                                 )}
                             >
                                 {" "}
-                                Games
+                                Statistics
                             </h2>{" "}
                         </Link>
                     </li>
@@ -34,7 +34,7 @@ function Navigation() {
                                     "heading heading__2"
                                 )}
                             >
-                                Achievements
+                                Ranking
                             </h2>
                         </Link>
                     </li>
@@ -48,7 +48,7 @@ function Navigation() {
                                     "heading heading__2"
                                 )}
                             >
-                                Ranking
+                                BLANK
                             </h2>{" "}
                         </Link>
                     </li>

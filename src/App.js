@@ -15,6 +15,9 @@ import Achievements from "./pages/Achievements";
 import UserProfile from "./pages/UserProfile";
 import LogIn from "./pages/LogIn";
 import Warning from "./pages/Warning";
+import Quickgame from "./pages/Quickgame";
+
+import Footer from "./common/Footer";
 
 function App() {
     const [isLoggedIn] = useAuth();
@@ -75,9 +78,21 @@ function App() {
                             }
                         ></Route>
                     )}
+                    {!isLoggedIn && (
+                        <Route
+                            exact
+                            path="/quickgame"
+                            element={
+                                <>
+                                    <Quickgame />
+                                </>
+                            }
+                        ></Route>
+                    )}
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </main>
+            <Footer />
         </Router>
     );
 }

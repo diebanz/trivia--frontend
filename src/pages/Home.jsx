@@ -5,7 +5,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Navigation from "../components/Navigation";
-import Footer from "../common/Footer";
 import Button from "../common/Button";
 
 import classes from "./../sass/pages/Home.module.scss";
@@ -66,7 +65,6 @@ function Home() {
                     </Link>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 }

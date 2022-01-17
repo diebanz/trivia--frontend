@@ -9,21 +9,20 @@ import Card from "../common/Card";
 import classes from "./../sass/pages/LogIn.module.scss";
 
 function LogIn() {
-    /* Email verification YES */
     const [email, setEmail] = useState("");
     const [btnDisabled, setBtnDisabled] = useState(true);
 
+
+    /* Email verification */
+
     const updateInputHandler = (event)  => {
-       
-        if(email === "") {
-            setBtnDisabled(true)
+        setBtnDisabled(true);
 
-        } else if(event.target.value.match(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i) ) {
-
+       if(event.target.value.match(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i) ) {
             setBtnDisabled(false);
         }
 
-        setEmail(event.target.value);
+        setEmail(event.target.value);   
     }
 
 
