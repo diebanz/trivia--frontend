@@ -8,7 +8,6 @@ import Button from "./../common/Button";
 
 import classes from "./../sass/pages/Warning.module.scss";
 import styles from "./../sass/common/Button.module.scss";
-import cn from "classnames";
 
 function Warning() {
     return (

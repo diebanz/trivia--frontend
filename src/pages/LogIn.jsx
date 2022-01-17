@@ -1,4 +1,5 @@
 import React from "react";
+import { useState} from "react"
 import { Link } from "react-router-dom";
 
 import { FaGithub, FaGoogle, FaTimesCircle } from "react-icons/fa";
@@ -8,7 +9,28 @@ import Card from "../common/Card";
 import classes from "./../sass/pages/LogIn.module.scss";
 
 function LogIn() {
-    /* Email verification ?? */
+    /* Email verification YES */
+    const [email, setEmail] = useState("");
+    const [btnDisabled, setBtnDisabled] = useState(true);
+
+    const updateInputHandler = (event)  => {
+       
+        if(email === "") {
+            setBtnDisabled(true)
+
+        } else if(event.target.value.match(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i) ) {
+
+            setBtnDisabled(false);
+        }
+
+        setEmail(event.target.value);
+    }
+
+
+    const submitHandler = (event) => {
+        event.preventDefault();
+    };
+
 
     return (
         <div>
@@ -22,12 +44,16 @@ function LogIn() {
                     </h3>
                     <p>No worries, we will register you on the way</p>
                 </div>
-                <form>
+                <form onSubmit={submitHandler}>
                     <label htmlFor="">Your email</label>
-                    <input type="text" />
-                    <button type="submit" className={classes.btn}>
-                        Log in
-                    </button>
+                    <input type="text" name="text" value={email} placeholder="Please, write your email" onChange={updateInputHandler}
+                    />
+                    <Link to="/userprofile"> 
+                    <button
+                        type="submit"
+                        className={classes.btn}
+                        disabled={btnDisabled}
+                    >Log in</button> </Link>
                     <p>OR</p>
                 </form>
                 <div className={classes.login__socials}>

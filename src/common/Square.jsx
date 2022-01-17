@@ -6,7 +6,7 @@ function Square(props) {
     return (
         <div>
             <div className={classes.square}>
-                <h2 className="heading heading__2">{props.title}</h2>
+                <h3 className="heading heading__3">{props.title}</h3>
             </div>
         </div>
     );
