@@ -7,14 +7,18 @@
     align-items: center;
     margin: 2rem 0;
 
-    &--category {
-        width: 30%;
+    &--category,
+    &--value {
         padding: 1rem 2rem;
-        background: #6ccfe8;
-        box-shadow: 4px 4px 4px $color__primary--dark;
         border-radius: 1rem;
         text-align: center;
         text-transform: uppercase;
+    }
+
+    &--category {
+        width: 30%;
+        background: #6ccfe8;
+        box-shadow: 4px 4px 4px $color__primary--dark;
         color: $color__primary--dark;
         font-weight: 700;
         letter-spacing: 2px;
@@ -24,9 +28,6 @@
         cursor: pointer;
         width: 20%;
         background: #dbd3d8;
-        border-radius: 1rem;
-        padding: 1rem 2rem;
-        text-align: center;
 
         &:hover {
             background: #6ccfe8;
