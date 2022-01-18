@@ -85,13 +85,12 @@ form {
         transform: scale(0.98);
     }
 
-
     &:disabled {
         background-color: #cccccc;
         color: #333;
         cursor: auto;
     }
-    
+
     &:disabled:hover {
         transform: scale(1);
         opacity: 1;

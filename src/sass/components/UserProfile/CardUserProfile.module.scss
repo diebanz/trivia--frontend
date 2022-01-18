@@ -1,0 +1,112 @@
+@import "./../../config.scss";
+
+.profile {
+    background-color: rgba($color__primary, 0.5);
+    border-radius: 2rem;
+    width: 45%;
+    margin: 3rem;
+
+    &__user {
+        padding: 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        border-radius: 1rem;
+
+        &--piccontainer,
+        &--namecontainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        &--pic {
+            width: 20rem;
+            height: 20rem;
+            background-color: #fff;
+            border-radius: 50%;
+            position: relative;
+            background-image: url(./../../../img/natalia.jpg);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            box-shadow: 0.2rem 0.2rem 0.2rem $color__primary--dark;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 14rem;
+                left: 0;
+                width: 7rem;
+                height: 7rem;
+                border-radius: 50%;
+                background-color: $color__secondary--light;
+                box-shadow: 0.2rem 0.2rem 0.2rem $color__primary--dark;
+            }
+        }
+
+        &--year,
+        &--recentachiev,
+        &--currentrank {
+            text-align: center;
+            color: #ccc;
+            font-size: 2rem;
+            background-color: rgba($color__grey--dark, 0.4);
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0.2rem 0.2rem 0.2rem $color__primary--dark;
+        }
+
+        &--namecontainer {
+            width: 50%;
+            align-items: stretch;
+        }
+
+        &--name,
+        &--email {
+            width: 100%;
+            background-color: rgba($color__secondary--light, 0.5);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 1rem;
+            box-shadow: 0.2rem 0.2rem 0.2rem $color__primary--dark;
+        }
+
+        &--email {
+        }
+
+        &--statcontainer {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        &--recentachiev {
+        }
+
+        &--currentrank {
+        }
+
+        &--iconcontainer {
+        }
+
+        &--icon {
+            color: $color__secondary--light;
+            font-size: 2.5rem;
+        }
+    }
+
+    &__stats {
+        &--titles {
+            & h4 {
+                color: $color__secondary--light;
+            }
+        }
+
+        &--data {
+        }
+    }
+}
