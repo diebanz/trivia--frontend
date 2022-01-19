@@ -1,5 +1,5 @@
 import React from "react";
-import { useState} from "react"
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { FaGithub, FaGoogle, FaTimesCircle } from "react-icons/fa";
@@ -12,24 +12,25 @@ function LogIn() {
     const [email, setEmail] = useState("");
     const [btnDisabled, setBtnDisabled] = useState(true);
 
-
     /* Email verification */
 
-    const updateInputHandler = (event)  => {
+    const updateInputHandler = (event) => {
         setBtnDisabled(true);
 
-       if(event.target.value.match(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i) ) {
+        if (
+            event.target.value.match(
+                /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
+            )
+        ) {
             setBtnDisabled(false);
         }
 
-        setEmail(event.target.value);   
-    }
-
+        setEmail(event.target.value);
+    };
 
     const submitHandler = (event) => {
         event.preventDefault();
     };
-
 
     return (
         <div>
@@ -45,15 +46,23 @@ function LogIn() {
                 </div>
                 <form onSubmit={submitHandler}>
                     <label htmlFor="">Your email</label>
-                    <input type="text" name="text" value={email} placeholder="Please, write your email" onChange={updateInputHandler}
+                    <input
+                        type="text"
+                        name="text"
+                        value={email}
+                        placeholder="Please, write your email"
+                        onChange={updateInputHandler}
                     />
-                    <Link to="/userprofile"> 
-                    <button
-                        type="submit"
-                        className={classes.btn}
-                        disabled={btnDisabled}
-                    >Log in</button> </Link>
-                    <p>OR</p>
+                    <Link to="/userprofile">
+                        <button
+                            type="submit"
+                            className={classes.btn}
+                            disabled={btnDisabled}
+                        >
+                            Log in
+                        </button>{" "}
+                    </Link>
+                    <p className={classes.break}>OR</p>
                 </form>
                 <div className={classes.login__socials}>
                     <div className={classes["login__socials--google"]}>

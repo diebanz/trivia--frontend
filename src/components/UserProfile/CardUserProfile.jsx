@@ -1,7 +1,7 @@
 import React from "react";
 
-import CardUserProfileStats from "./CardUserProfile/CardUserProfileStats";
-import CardUserProfileUser from "./CardUserProfile/CardUserProfileUser";
+import CardUserProfileStats from "./Card/CardUserProfileStats";
+import CardUserProfileUser from "./Card/CardUserProfileUser";
 
 import classes from "./../../sass/components/UserProfile/CardUserProfile.module.scss";
 

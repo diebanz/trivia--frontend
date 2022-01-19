@@ -14,7 +14,7 @@ function CardUserProfileUser() {
             <div className={classes["profile__user--namecontainer"]}>
                 <div className={classes["profile__user--name"]}>Crazy CAT</div>
                 <div className={classes["profile__user--email"]}>
-                    Crazy CAT@catcat.at
+                    CrazyCAT@catcat.at
                 </div>
                 <div className={classes["profile__user--statcontainer"]}>
                     <div className={classes["profile__user--recentachiev"]}>

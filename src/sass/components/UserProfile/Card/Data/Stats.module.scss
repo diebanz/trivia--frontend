@@ -1,0 +1,15 @@
+@import "./../../../../config.scss";
+
+.stats {
+    height: 42rem;
+    overflow-y: auto;
+    color: $color__primary--dark;
+
+    &__title {
+        text-align: center;
+        text-transform: uppercase;
+        background-color: $color__secondary--light;
+        margin-bottom: 1rem;
+        padding: 1rem;
+    }
+}
