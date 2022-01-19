@@ -1,15 +1,37 @@
 @import "./../../../../config.scss";
 
 .stats {
-    height: 42rem;
-    overflow-y: auto;
+    // height: 40rem;
+    // overflow-y: auto;
     color: $color__primary--dark;
 
     &__title {
+        font-size: 1.8rem;
         text-align: center;
         text-transform: uppercase;
-        background-color: $color__secondary--light;
-        margin-bottom: 1rem;
+        text-decoration: underline;
         padding: 1rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        word-spacing: 5px;
+    }
+
+    &__data {
+        background-color: $color__primary;
+        padding: 0.5rem;
+        font-size: 1.5rem;
+        border-radius: 1rem;
+        font-weight: 700;
+        color: $color__secondary--light;
+    }
+
+    &__together {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        &--item {
+            width: 49.5%;
+        }
     }
 }
