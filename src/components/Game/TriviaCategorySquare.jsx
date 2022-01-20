@@ -12,11 +12,6 @@ function TriviaCategorySquare(props) {
                     {props.amount}
                 </h4>
             </div>
-            {/* <div
-                className={`${classes["category__card--back"]} ${classes["category__card"]}`}
-            >
-                <h4 className={classes["category__square--text"]}>Go for it</h4>
-            </div> */}
         </div>
     );
 }

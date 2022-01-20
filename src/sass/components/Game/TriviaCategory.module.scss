@@ -1,6 +1,18 @@
 @import "./../../config.scss";
 
 .container {
+    width: 20rem;
+    background-color: red;
     display: flex;
     flex-direction: column;
+}
+
+.title {
+    text-align: center;
+    text-transform: uppercase;
+    padding: 1rem;
+    border-radius: 1rem;
+    font-size: 3rem;
+    color: $color__primary--dark;
+    background-color: $color__primary--light;
 }

@@ -6,7 +6,7 @@ import classes from "./../../sass/components/Game/TriviaCategory.module.scss";
 function TriviaCategory() {
     return (
         <div className={classes.container}>
-            <h2 className="heading heading__2">Category</h2>
+            <h2 className={classes.title}>Category</h2>
             <TriviaCategorySquare amount="500" />
             <TriviaCategorySquare amount="400" />
             <TriviaCategorySquare amount="300" />

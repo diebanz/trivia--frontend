@@ -1,12 +1,6 @@
 @import "./../../config.scss";
 
 .category__square {
-    perspective: 150;
-    -moz-perspective: 150;
-    position: relative;
-    height: 8rem;
-    margin: 1.5rem 0;
-
     .category__card {
         width: 8rem;
         height: 8rem;
@@ -14,9 +8,7 @@
         justify-content: center;
         align-items: center;
         border: 2px solid $color__gold;
-        position: absolute;
-        top: 0;
-        left: 0;
+        margin: 1.5rem 0;
         backface-visibility: hidden;
         transform: rotate(45deg);
         background-color: $color__primary--dark;
@@ -24,6 +16,8 @@
 
         &:hover {
             cursor: pointer;
+            border: 2px solid $color__primary--dark;
+            background-color: $color__gold;
             transform: rotateY(360deg);
         }
     }
@@ -35,6 +29,7 @@
         transition: all 0.5s;
 
         &:hover {
+            color: $color__primary--dark;
             transform: rotate(360deg);
         }
     }
