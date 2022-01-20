@@ -6,10 +6,9 @@
     color: $color__primary--dark;
 
     &__title {
-        font-size: 1.8rem;
+        font-size: 2rem;
         text-align: center;
         text-transform: uppercase;
-        text-decoration: underline;
         padding: 1rem;
         font-weight: 700;
         letter-spacing: 2px;
@@ -18,7 +17,7 @@
 
     &__data {
         background-color: $color__primary;
-        padding: 0.5rem;
+        padding: 1rem;
         font-size: 1.5rem;
         border-radius: 1rem;
         font-weight: 700;

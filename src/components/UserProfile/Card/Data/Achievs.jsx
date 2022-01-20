@@ -34,7 +34,7 @@ function Achievs() {
         <>
             {data && !allUnlocked && (
                 <div className={classes.achievements}>
-                    {/* <AchievCard
+                    <AchievCard
                         title="Games played"
                         text="games"
                         values={[100, 200, 300]}
@@ -63,11 +63,11 @@ function Achievs() {
                         text="completed categories"
                         values={[100, 200, 300]}
                         data={data.completedCategories.total}
-                    /> */}
+                    />
                     <AchievCard
                         title="Completed categories in one game"
                         text="none"
-                        values={[1, 2, 3]}
+                        values={[1, 2, 3, 4, 5, 6]}
                         data={data.completedCategories.max}
                     />
                 </div>
