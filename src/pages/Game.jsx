@@ -8,11 +8,13 @@ function Game() {
     return (
         <div className={classes.container}>
             <LogoTrivia />
-            <TriviaCategory />
-            <TriviaCategory />
-            <TriviaCategory />
-            <TriviaCategory />
-            <TriviaCategory />
+            <div className={classes.game__container}>
+                <TriviaCategory />
+                <TriviaCategory />
+                <TriviaCategory />
+                <TriviaCategory />
+                <TriviaCategory />
+            </div>
         </div>
     );
 }

@@ -1,9 +1,41 @@
 @import "./../../config.scss";
 
 .category__square {
-    width: 8rem;
+    perspective: 150;
+    -moz-perspective: 150;
+    position: relative;
     height: 8rem;
-    transform: rotate(45deg);
-    background-color: $color__primary--dark;
-    border: 2px solid $color__gold;
+    margin: 1.5rem 0;
+
+    .category__card {
+        width: 8rem;
+        height: 8rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid $color__gold;
+        position: absolute;
+        top: 0;
+        left: 0;
+        backface-visibility: hidden;
+        transform: rotate(45deg);
+        background-color: $color__primary--dark;
+        transition: all 0.8s;
+
+        &:hover {
+            cursor: pointer;
+            transform: rotateY(360deg);
+        }
+    }
+
+    &--text {
+        font-size: 2rem;
+        transform: rotate(-45deg);
+        color: $color__gold;
+        transition: all 0.5s;
+
+        &:hover {
+            transform: rotate(360deg);
+        }
+    }
 }
