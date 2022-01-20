@@ -19,7 +19,7 @@ function AchievCard({ data, title, text, values }) {
         <div className={classes.card}>
             <div className={classes.card__container}>
                 <div className={classes.card__square}></div>
-                <FaTrophy className={classes["card__icon"]} />
+                {/* <FaTrophy className={classes["card__square--icon"]} /> */}
                 <div className={classes.card__date}></div>
             </div>
             <div className={classes.card__data}>

@@ -15,7 +15,6 @@
         width: 20%;
         display: flex;
         justify-content: center;
-        position: relative;
     }
 
     &__square {
@@ -28,7 +27,7 @@
         box-sizing: border-box;
         box-shadow: inset -3px -3px 7px #255680, inset 4px 4px 5px #0e2537;
 
-        &::after {
+        &::before {
             content: "";
             position: absolute;
             top: -0.6rem;
@@ -39,30 +38,44 @@
             width: 6rem;
             height: 6rem;
         }
-    }
 
-    &__icon,
-    &__icon--bronze,
-    &__icon--silver,
-    &__icon--gold {
-        font-size: 4.5rem;
-        position: absolute;
-        top: 1.8rem;
-        left: 3.6rem;
-        color: $color__grey--light;
-
-        &--bronze {
-            color: $color__bronze;
-        }
-
-        &--silver {
-            color: $color__silver;
-        }
-
-        &--gold {
-            color: $color__gold;
+        &::after {
+            font-family: "Font Awesome 5 Free";
+            font-weight: 700;
+            content: "\f091";
+            font-size: 4.5rem;
+            position: absolute;
+            top: 0.4rem;
+            left: 0.4rem;
+            margin: 1.2rem;
+            color: rgba($color__secondary--light, 0.5);
+            transform: rotate(-45deg);
+            z-index: 100;
         }
     }
+
+    // &__icon,
+    // &__icon--bronze,
+    // &__icon--silver,
+    // &__icon--gold {
+    //     font-size: 4.5rem;
+    //     position: absolute;
+    //     top: 1.8rem;
+    //     left: 3.6rem;
+    //     color: $color__grey--light;
+
+    //     &--bronze {
+    //         color: $color__bronze;
+    //     }
+
+    //     &--silver {
+    //         color: $color__silver;
+    //     }
+
+    //     &--gold {
+    //         color: $color__gold;
+    //     }
+    // }
 
     &__date {
     }
