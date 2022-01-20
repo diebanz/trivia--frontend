@@ -42,7 +42,9 @@ function LogIn() {
                     <h3 className="heading heading__3">
                         You need to be logged in to play like A true warrior!
                     </h3>
-                    <p>No worries, we will register you on the way</p>
+                    <p className={classes.break}>
+                        No worries, we will register you on the way
+                    </p>
                 </div>
                 <form onSubmit={submitHandler}>
                     <label htmlFor="">Your email</label>

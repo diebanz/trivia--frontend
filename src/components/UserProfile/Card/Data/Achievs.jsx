@@ -37,35 +37,35 @@ function Achievs() {
                     <AchievCard
                         title="Games played"
                         text="games"
-                        values={[100, 200, 300]}
+                        values={[10, 100, 1000]}
                         data={data.gamesPlayed}
                     />
                     <AchievCard
                         title="HighScore"
                         text="points"
-                        values={[100, 200, 300]}
+                        values={[3000, 6000, 11111]}
                         data={data.score.high}
                     />
                     <AchievCard
                         title="Total score"
                         text="points"
-                        values={[100, 200, 300]}
+                        values={[100000, 500000, 1000000]}
                         data={data.score.total}
                     />
                     <AchievCard
                         title="Correct answers"
                         text="correct answers"
-                        values={[100, 200, 300]}
+                        values={[100, 1000, 10000]}
                         data={data.correctAnswers}
                     />
                     <AchievCard
                         title="Completed categories"
                         text="completed categories"
-                        values={[100, 200, 300]}
+                        values={[100, 500, 1000]}
                         data={data.completedCategories.total}
                     />
                     <AchievCard
-                        title="Completed categories in one game"
+                        title="Completed categories per game"
                         text="none"
                         values={[1, 2, 3, 4, 5, 6]}
                         data={data.completedCategories.max}
