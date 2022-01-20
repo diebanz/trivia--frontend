@@ -36,37 +36,37 @@ function Achievs() {
                 <div className={classes.achievements}>
                     <AchievCard
                         title="Games played"
-                        text="games"
+                        text= {['Play ', ' games!']}
                         values={[10, 100, 1000]}
                         data={data.gamesPlayed}
                     />
                     <AchievCard
                         title="HighScore"
-                        text="points"
+                        text= {['Reach a Highscore of ', '!']}
                         values={[3000, 6000, 11111]}
                         data={data.score.high}
                     />
                     <AchievCard
                         title="Total score"
-                        text="points"
+                        text= {['Collect a total score of ', ' points!']}
                         values={[100000, 500000, 1000000]}
                         data={data.score.total}
                     />
                     <AchievCard
                         title="Correct answers"
-                        text="correct answers"
+                        text= {['Give ', ' correct answers!']}
                         values={[100, 1000, 10000]}
                         data={data.correctAnswers}
                     />
                     <AchievCard
                         title="Completed categories"
-                        text="completed categories"
+                        text= {['Answer ', ' categories completely!']}
                         values={[100, 500, 1000]}
                         data={data.completedCategories.total}
                     />
                     <AchievCard
-                        title="Completed categories per game"
-                        text="none"
+                        title="Comp. categories per game"
+                        text= {['Complete ', ' categories in one game!']}
                         values={[1, 2, 3, 4, 5, 6]}
                         data={data.completedCategories.max}
                     />

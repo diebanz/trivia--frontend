@@ -28,15 +28,15 @@
         box-shadow: 0.2rem 0.2rem 0.2rem $color__primary--dark;
 
         &::after {
-            content: "";
+            content: url(https://flagcdn.com/64x48/pl.png);
             position: absolute;
             top: 10rem;
             left: -1rem;
             width: 5rem;
             height: 5rem;
-            border-radius: 50%;
-            background-color: $color__secondary--light;
-            box-shadow: 0.2rem 0.2rem 0.2rem $color__primary--dark;
+            // border-radius: 50%;
+            // background-color: $color__secondary--light;
+            // box-shadow: 0.2rem 0.2rem 0.2rem $color__primary--dark;
         }
     }
 

@@ -23,26 +23,36 @@ function AchievCard({ data, title, text, values }) {
                 <div className={classes.card__date}></div>
             </div>
             <div className={classes.card__data}>
-                {/* <p>{data.unlocked.length && { month }}</p> */}
-                {data.unlocked.length && <p>22.22.2022</p>}
-                <h2 className={classes["card__data--title"]}>{title}</h2>
-                {(values[data.unlocked.length - 1] && (
-                    <h3 className="heading heading__3">
-                        unlocked: {values[data.unlocked.length - 1]} {title}
-                    </h3>
-                )) || (
-                    <h4 className={classes["card__data--condition"]}>
-                        to gain next level play {data.next} {text}
-                    </h4>
-                )}
-                {!values[data.unlocked.length - 1] && (
-                    <p>
-                        next unlock: {data.next} {text} left
-                    </p>
-                )}
+    {/* UNLOCK DATE */}
+            <div className={classes.card__date}>
+                {(data.unlocked.length && <p>{data.unlocked[data.unlocked.length - 1]}</p>) || ''}
+            </div>
+    {/* TITLE */}
+            <h2 className={classes["card__data--title"]}>{title}</h2>
+            <h3 className="heading heading__3">{text[0]}{values[data.unlocked.length]}{text[1]}</h3>
+            <h4 className={classes["card__data--condition"]}>{data.next} until the next unlock</h4>
             </div>
         </div>
     );
 }
 
 export default AchievCard;
+
+
+{/* <p>{data.unlocked.length && { month }}</p>
+{data.unlocked.length && <p>22.22.2022</p>}
+<h2 className={classes["card__data--title"]}>{title}</h2>
+{(values[data.unlocked.length - 1] && (
+    <h3 className="heading heading__3">
+        unlocked: {values[data.unlocked.length - 1]} {title}
+    </h3>
+)) || (
+    <h4 className={classes["card__data--condition"]}>
+        to gain next level play {data.next} {text}
+    </h4>
+)}
+{!values[data.unlocked.length - 1] && (
+    <p>
+        next unlock: {data.next} {text} left
+    </p>
+)} */}
