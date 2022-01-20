@@ -1,7 +1,6 @@
 @import "./../../../config.scss";
 
 .dashboard__item {
-    padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -9,7 +8,8 @@
 
     &--category,
     &--value {
-        padding: 1rem 2rem;
+        font-size: 1.8rem;
+        padding: 1.5rem;
         border-radius: 1rem;
         text-align: center;
         text-transform: uppercase;
