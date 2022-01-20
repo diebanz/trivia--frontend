@@ -13,7 +13,6 @@ function CardGameDashboard() {
         <section className={classes.dashboard}>
             <div className={classes.dashboard__game}>
                 <Square title="trivia" className={classes.dashboard__square} />
-
                 <DashboardItem />
                 <DashboardItem />
                 <DashboardItem />

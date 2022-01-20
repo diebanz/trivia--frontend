@@ -36,28 +36,28 @@ function App() {
                         }
                     ></Route>
 
-                    {isLoggedIn && (
-                        <Route
-                            exact
-                            path="/game"
-                            element={
-                                <>
-                                    <Game />
-                                </>
-                            }
-                        ></Route>
-                    )}
-                    {isLoggedIn && (
-                        <Route
-                            exact
-                            path="/userprofile"
-                            element={
-                                <>
-                                    <UserProfile />
-                                </>
-                            }
-                        ></Route>
-                    )}
+                    {/* {isLoggedIn && ( */}
+                    <Route
+                        exact
+                        path="/game"
+                        element={
+                            <>
+                                <Game />
+                            </>
+                        }
+                    ></Route>
+                    {/* )} */}
+                    {/* {isLoggedIn && ( */}
+                    <Route
+                        exact
+                        path="/userprofile"
+                        element={
+                            <>
+                                <UserProfile />
+                            </>
+                        }
+                    ></Route>
+                    {/* )} */}
 
                     {!isLoggedIn && (
                         <Route

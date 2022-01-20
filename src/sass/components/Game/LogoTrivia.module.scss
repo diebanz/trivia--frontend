@@ -1,0 +1,45 @@
+@import "./../../config.scss";
+.container {
+    padding: 3rem;
+}
+
+.logo {
+    position: relative;
+
+    &__title {
+        font-size: 5rem;
+        position: absolute;
+        top: 5rem;
+        left: 5rem;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #ffffff;
+    }
+
+    &__span {
+        font-size: 8rem;
+        color: $color__primary--light;
+    }
+
+    &__line {
+        position: absolute;
+        top: 13rem;
+        left: 7.1rem;
+        height: 2px;
+        width: 30rem;
+        background-color: $color__primary--light;
+    }
+
+    &__diamond {
+        position: absolute;
+        top: 12.3rem;
+        left: 37rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        background-color: $color__primary--light;
+        transform: rotate(45deg);
+        margin-right: 1rem;
+    }
+}
