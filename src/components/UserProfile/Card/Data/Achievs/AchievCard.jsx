@@ -1,7 +1,5 @@
 import React from "react";
 
-import { FaTrophy } from "react-icons/fa";
-
 import classes from "./../../../../../sass/components/UserProfile/Card/Data/Achives/AchievCard.module.scss";
 
 function AchievCard({ data, title, text, values }) {
@@ -17,42 +15,49 @@ function AchievCard({ data, title, text, values }) {
 
     return (
         <div className={classes.card}>
+            <div
+                className={classes.card__unlocked}
+                style={{
+                    width: `${
+                        100 -
+                        (data.next * 100) /
+                            (values[data.unlocked.length] -
+                                values[data.unlocked.length - 1])
+                    }%`,
+                }}
+            ></div>
             <div className={classes.card__container}>
                 <div className={classes.card__square}></div>
-                {/* <FaTrophy className={classes["card__square--icon"]} /> */}
+
                 <div className={classes.card__date}></div>
             </div>
             <div className={classes.card__data}>
-    {/* UNLOCK DATE */}
-            <div className={classes.card__date}>
-                {(data.unlocked.length && <p>{data.unlocked[data.unlocked.length - 1]}</p>) || ''}
-            </div>
-    {/* TITLE */}
-            <h2 className={classes["card__data--title"]}>{title}</h2>
-            <h3 className="heading heading__3">{text[0]}{values[data.unlocked.length]}{text[1]}</h3>
-            <h4 className={classes["card__data--condition"]}>{data.next} until the next unlock</h4>
+                {/* <div className={classes.card__date}>
+                    {(data.unlocked.length && (
+                        <p>{data.unlocked[data.unlocked.length - 1]}</p>
+                    )) ||
+                        ""}
+                </div> */}
+                <div className={classes.card__text}>
+                    <h2 className={classes["card__data--title"]}>{title}</h2>
+                    <h3 className={classes["card__data--condition"]}>
+                        {text[0]}
+                        {values[data.unlocked.length]}
+                        {text[1]}
+                    </h3>
+
+                    <h4 className={classes["card__data--todo"]}>
+                        {" "}
+                        <div
+                            className={classes.card__progression}
+                            style={{ width: `${100 - data.next}%` }}
+                        ></div>
+                        {data.next} / 10
+                    </h4>
+                </div>
             </div>
         </div>
     );
 }
 
 export default AchievCard;
-
-
-{/* <p>{data.unlocked.length && { month }}</p>
-{data.unlocked.length && <p>22.22.2022</p>}
-<h2 className={classes["card__data--title"]}>{title}</h2>
-{(values[data.unlocked.length - 1] && (
-    <h3 className="heading heading__3">
-        unlocked: {values[data.unlocked.length - 1]} {title}
-    </h3>
-)) || (
-    <h4 className={classes["card__data--condition"]}>
-        to gain next level play {data.next} {text}
-    </h4>
-)}
-{!values[data.unlocked.length - 1] && (
-    <p>
-        next unlock: {data.next} {text} left
-    </p>
-)} */}

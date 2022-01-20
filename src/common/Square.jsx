@@ -5,7 +5,7 @@ import classes from "./../sass/common/Square.module.scss";
 function Square(props) {
     return (
         <div>
-            <div className={classes.square}>
+            <div className={`${classes.square} ${props.className}`}>
                 <h3 className="heading heading__3">{props.title}</h3>
             </div>
         </div>

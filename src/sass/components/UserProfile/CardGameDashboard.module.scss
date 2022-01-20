@@ -10,13 +10,16 @@
     border-radius: 1rem;
 
     &__game {
-        width: 95%;
+        width: 100%;
         background-color: rgba($color__secondary--light, 0.5);
         border-radius: 2rem;
-        margin: 3rem;
-        padding: 5rem 1rem;
+        margin-bottom: 2rem;
+        padding: 3rem 1rem;
+        display: flex;
+        flex-direction: column;
     }
 
-    &__button {
+    &__square {
+        margin: 3rem 0 3rem 3rem;
     }
 }
