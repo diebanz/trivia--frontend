@@ -1,0 +1,9 @@
+@import "./../../config.scss";
+
+.category__square {
+    width: 8rem;
+    height: 8rem;
+    transform: rotate(45deg);
+    background-color: $color__primary--dark;
+    border: 2px solid $color__gold;
+}

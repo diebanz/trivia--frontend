@@ -1,1 +1,6 @@
 @import "./../config.scss";
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
