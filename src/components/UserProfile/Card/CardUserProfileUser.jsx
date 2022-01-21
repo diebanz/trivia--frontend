@@ -10,7 +10,7 @@ function CardUserProfileUser() {
     useEffect(() => {
         (async () => {
             const response = await axios.get(
-                `${process.env.REACT_APP_BACKEND}/user/tobi`
+                `${process.env.REACT_APP_BACKEND}/user/FloH`
             );
             console.log(response.data);
             if (response.data.message === "success")

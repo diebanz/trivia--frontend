@@ -9,7 +9,7 @@ function Stats() {
     useEffect(() => {
         (async () => {
             const response = await axios.get(
-                `${process.env.REACT_APP_BACKEND}/user/tobi/stats`
+                `${process.env.REACT_APP_BACKEND}/user/FloH/stats`
             );
             console.log(response.data);
             if (response.data.message === "success")

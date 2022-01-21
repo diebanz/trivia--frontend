@@ -11,7 +11,7 @@ function Achievs() {
     useEffect(() => {
         (async () => {
             const response = await axios.get(
-                `${process.env.REACT_APP_BACKEND}/user/tobi/achievs`
+                `${process.env.REACT_APP_BACKEND}/user/FloH/achievs`
             );
             if (response.data.message === "success") {
                 setData(response.data.payload);
