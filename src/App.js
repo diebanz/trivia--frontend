@@ -13,6 +13,7 @@ import UserProfile from "./pages/UserProfile";
 import LogIn from "./pages/LogIn";
 import Warning from "./pages/Warning";
 import Game from "./pages/Game";
+import Question from "./pages/Question";
 import Footer from "./common/Footer";
 
 import "./sass/app.scss";
@@ -40,6 +41,18 @@ function App() {
                         element={
                             <>
                                 <Game />
+                            </>
+                        }
+                    ></Route>
+                    {/* )} */}
+                    {/* {isLoggedIn && ( */}
+                    {/* {isLoggedIn && ( */}
+                    <Route
+                        exact
+                        path="/question"
+                        element={
+                            <>
+                                <Question />
                             </>
                         }
                     ></Route>

@@ -1,4 +1,4 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 import { FaEdit } from "react-icons/fa";
@@ -22,7 +22,7 @@ function CardUserProfileUser() {
             <div className={classes["profile__user--piccontainer"]}>
                 <div className={classes["profile__user--pic"]}></div>
                 <div className={classes["profile__user--year"]}>
-                    <p>{(data && data.dob) || 'set DoB'}</p>
+                    <p>{(data && data.dob) || "set DoB"}</p>
                 </div>
             </div>
             <div className={classes["profile__user--namecontainer"]}>
@@ -30,15 +30,7 @@ function CardUserProfileUser() {
                     <p>{data && data.username}</p>
                 </div>
                 <div className={classes["profile__user--email"]}>
-                    <p>{(data && data.email) || 'enter your email here'}</p>
-                </div>
-                <div className={classes["profile__user--statcontainer"]}>
-                    <div className={classes["profile__user--recentachiev"]}>
-                        Warmed up!
-                    </div>
-                    <div className={classes["profile__user--currentrank"]}>
-                        {/* {data && data.} */}
-                    </div>
+                    <p>{(data && data.email) || "enter your email here"}</p>
                 </div>
             </div>
             <div className={classes["profile__user--iconcontainer"]}>

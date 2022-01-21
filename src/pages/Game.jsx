@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import LogoTrivia from "../components/Game/LogoTrivia";
 import TriviaCategory from "../components/Game/TriviaCategory";
 import TriviaStatsBar from "../components/Game/TriviaStatsBar";
@@ -13,6 +15,9 @@ function Game() {
                 <TriviaStatsBar />
             </div>
             <div className={classes.game__container}>
+                <Link to="/question">
+                    <TriviaCategory />
+                </Link>
                 <TriviaCategory />
                 <TriviaCategory />
                 <TriviaCategory />
