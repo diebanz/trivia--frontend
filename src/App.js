@@ -6,19 +6,16 @@ import {
     Navigate,
 } from "react-router-dom";
 
-import "./sass/app.scss";
-
 import { useAuth } from "./context/loginContext";
 
 import Home from "./pages/Home";
-
 import UserProfile from "./pages/UserProfile";
 import LogIn from "./pages/LogIn";
 import Warning from "./pages/Warning";
-import Quickgame from "./pages/Quickgame";
 import Game from "./pages/Game";
-
 import Footer from "./common/Footer";
+
+import "./sass/app.scss";
 
 function App() {
     const [isLoggedIn] = useAuth();
@@ -81,17 +78,7 @@ function App() {
                             }
                         ></Route>
                     )}
-                    {!isLoggedIn && (
-                        <Route
-                            exact
-                            path="/quickgame"
-                            element={
-                                <>
-                                    <Quickgame />
-                                </>
-                            }
-                        ></Route>
-                    )}
+
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </main>

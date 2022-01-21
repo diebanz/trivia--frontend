@@ -10,10 +10,10 @@ function Game() {
             <LogoTrivia />
             <div className={classes.game__container}>
                 <TriviaCategory />
-                {/* <TriviaCategory />
                 <TriviaCategory />
                 <TriviaCategory />
-                <TriviaCategory /> */}
+                <TriviaCategory />
+                <TriviaCategory />
             </div>
         </div>
     );

@@ -1,10 +1,11 @@
 @import "./../../config.scss";
 
 .container {
-    width: 20rem;
-    background-color: red;
+    margin: 0 5rem;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .title {
@@ -13,6 +14,7 @@
     padding: 1rem;
     border-radius: 1rem;
     font-size: 3rem;
-    color: $color__primary--dark;
-    background-color: $color__primary--light;
+    color: $color__gold;
+    background-color: $color__primary--dark;
+    border: 1px solid $color__gold;
 }

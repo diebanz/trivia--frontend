@@ -15,8 +15,8 @@ function LogSquare() {
                     <FaSignInAlt
                         className={
                             isLoggedIn
-                                ? classes.login__icon
-                                : classes.logout__icon
+                                ? classes.logout__icon
+                                : classes.login__icon
                         }
                     />
                 </div>
