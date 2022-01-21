@@ -1,5 +1,25 @@
 @import "./../../../config.scss";
+.flagSelection {
+   visibility: collapse;
+   position: relative;
+   bottom: -110%;
+   width: 800%;
+   height: 800%;
+   padding: 1rem;
+   overflow-y: scroll;
+   background: rgba($color__primary--dark, 0.6);
 
+   label {
+      background: none;
+      padding: .5rem;
+      input {
+         appearance: none;
+         width: 10%;
+         height: 10%;
+         cursor: pointer;
+      }
+   }
+}
 .profile__user {
    padding: 1rem;
    display: flex;
@@ -28,32 +48,10 @@
 
       &__flag {
          position: absolute;
-         bottom: 0;
+         bottom: -10%;
+         left: -10%;
          width: 40%;
          height: 30%;
-
-         .selectFlag {
-            visibility: collapse;
-            position: relative;
-            bottom: -100%;
-            width: 800%;
-            height: 800%;
-            overflow: scroll;
-
-            label {
-               width: 5rem;
-               height: 5rem;
-               //    border: 0.1rem solid lime;
-            }
-            input {
-               appearance: none;
-               width: 10%;
-               height: 10%;
-               background-position: center;
-               background-size: cover;
-               background-repeat: no-repeat;
-            }
-         }
       }
    }
 
