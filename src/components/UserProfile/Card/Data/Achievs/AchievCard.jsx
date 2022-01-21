@@ -32,12 +32,12 @@ function AchievCard({ data, title, text, values }) {
                 <div className={classes.card__date}></div>
             </div>
             <div className={classes.card__data}>
-                {/* <div className={classes.card__date}>
+                <div className={classes.card__date}>
                     {(data.unlocked.length && (
                         <p>{data.unlocked[data.unlocked.length - 1]}</p>
                     )) ||
                         ""}
-                </div> */}
+                </div>
                 <div className={classes.card__text}>
                     <h2 className={classes["card__data--title"]}>{title}</h2>
                     <h3 className={classes["card__data--condition"]}>

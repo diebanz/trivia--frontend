@@ -1,6 +1,5 @@
 export const flags = {
    ad: "https://flagcdn.com/64x48/ad.png",
-   aa: "https://flagcdn.com/64x48/aa.png",
    ae: "https://flagcdn.com/64x48/ae.png",
    af: "https://flagcdn.com/64x48/af.png",
    ag: "https://flagcdn.com/64x48/ag.png",
@@ -232,7 +231,6 @@ export const flags = {
    tz: "https://flagcdn.com/64x48/tz.png",
    ua: "https://flagcdn.com/64x48/ua.png",
    ug: "https://flagcdn.com/64x48/ug.png",
-   um: "https://flagcdn.com/64x48/um.png",
    un: "https://flagcdn.com/64x48/un.png",
    us: "https://flagcdn.com/64x48/us.png",
    uy: "https://flagcdn.com/64x48/uy.png",

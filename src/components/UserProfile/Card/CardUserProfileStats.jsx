@@ -9,7 +9,7 @@ import Stats from "./Data/Stats.jsx";
 import Achievs from "./Data/Achievs.jsx";
 
 function CardUserProfileStats() {
-    const [isActive, setIsActive] = useState("achievs");
+    const [isActive, setIsActive] = useState("ranks");
 
     return (
         <section className={classes.profile__stats}>
