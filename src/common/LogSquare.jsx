@@ -7,12 +7,17 @@ import classes from "./../sass/common/LogSquare.module.scss";
 
 import { useAuth } from "./../context/loginContext";
 
+
 function LogSquare() {
-    const [isLoggedIn] = useAuth();
-    const nav = useNavigate();
+    const [isLoggedIn, setIsLoggedIn] = useAuth();
+    const navigate = useNavigate();
+
     const logoutHandler = async() => {
-        const res = await axios.get(`${process.env.REACT_APP_BACKEND}/auth/logout`)
-        if(res.data.message === 'logged out') nav('/');
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND}/auth/logout`);
+        if(res.data.message === 'logged out') {
+            setIsLoggedIn(null);
+            navigate('/');
+        };
     }
 
     return (

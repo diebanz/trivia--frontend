@@ -22,7 +22,7 @@ function CardUserProfileStats() {
                             : classes["profile__stats--paragraph"]
                     }
                 >
-                    Ranking
+                    {'Ranking'}
                 </p>
                 <p
                     onClick={() => setIsActive("stats")}
@@ -32,7 +32,7 @@ function CardUserProfileStats() {
                             : classes["profile__stats--paragraph"]
                     }
                 >
-                    Statistics
+                    {'Statistics'}
                 </p>
                 <p
                     onClick={() => setIsActive("achievs")}
@@ -42,7 +42,7 @@ function CardUserProfileStats() {
                             : classes["profile__stats--paragraph"]
                     }
                 >
-                    Achievements
+                    {'Achievements'}
                 </p>
             </div>
             <div className={classes["profile__stats--data"]}>
