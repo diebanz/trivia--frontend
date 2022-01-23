@@ -1,4 +1,3 @@
-import React from "react";
 import {
     BrowserRouter as Router,
     Route,
@@ -15,82 +14,42 @@ import Home from "./pages/Home";
 import UserProfile from "./pages/UserProfile";
 import LogIn from "./pages/LogIn";
 import Warning from "./pages/Warning";
-import Quickgame from "./pages/Quickgame";
 import Game from "./pages/Game";
 
 import Footer from "./common/Footer";
 
 function App() {
-    const [isLoggedIn] = useAuth();
+    const [isLoggedIn, setIsLoggedIn] = useAuth();
+
+
     return (
         <Router>
             <main>
                 <Routes>
                     <Route
-                        exact
                         path="/"
-                        element={
-                            <>
-                                <Home />
-                            </>
-                        }
-                    ></Route>
-                    {/* {isLoggedIn && ( */}
+                        element={ isLoggedIn ? <Navigate to='/dashboard' /> : <Home />}
+                    />
                     <Route
-                        exact
+                        path="/dashboard"
+                        element={ isLoggedIn ? <UserProfile /> : <Navigate to='/login' />}
+                    />
+                    <Route
+                        path="/login"
+                        element={ isLoggedIn ? <Navigate to='/dashboard'  /> : <LogIn />}
+                    />
+                    <Route
+                        path="/warning"
+                        element={<Warning />}
+                    />
+                    <Route
                         path="/game"
-                        element={
-                            <>
-                                <Game />
-                            </>
-                        }
-                    ></Route>
-                    {/* )} */}
-                    {/* {isLoggedIn && ( */}
+                        element={<Game />}
+                    />
                     <Route
-                        exact
-                        path="/userprofile"
-                        element={
-                            <>
-                                <UserProfile />
-                            </>
-                        }
-                    ></Route>
-                    {/* )} */}
-                    {!isLoggedIn && (
-                        <Route
-                            exact
-                            path="/login"
-                            element={
-                                <>
-                                    <LogIn />
-                                </>
-                            }
-                        ></Route>
-                    )}
-                    {!isLoggedIn && (
-                        <Route
-                            exact
-                            path="/warning"
-                            element={
-                                <>
-                                    <Warning />
-                                </>
-                            }
-                        ></Route>
-                    )}
-                    {!isLoggedIn && (
-                        <Route
-                            exact
-                            path="/quickgame"
-                            element={
-                                <>
-                                    <Quickgame />
-                                </>
-                            }
-                        ></Route>
-                    )}
-                    <Route path="*" element={<Navigate to="/" />} />
+                        path="*"
+                        element={<Navigate to={isLoggedIn ? '/dashboard' : '/'} />} 
+                    />
                 </Routes>
             </main>
             <Footer />

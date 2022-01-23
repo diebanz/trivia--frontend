@@ -12,18 +12,13 @@ function LogIn() {
     const [email, setEmail] = useState("");
     const [btnDisabled, setBtnDisabled] = useState(true);
 
-    /* Email verification */
 
     const updateInputHandler = (event) => {
         setBtnDisabled(true);
 
-        if (
-            event.target.value.match(
-                /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
-            )
-        ) {
-            setBtnDisabled(false);
-        }
+        if (event.target.value.match(
+            /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
+        )) setBtnDisabled(false);
 
         setEmail(event.target.value);
     };
@@ -49,30 +44,32 @@ function LogIn() {
                 <form onSubmit={submitHandler}>
                     <label htmlFor="">Your email</label>
                     <input
-                        type="text"
+                        type="email"
                         name="text"
                         value={email}
                         placeholder="Please, write your email"
                         onChange={updateInputHandler}
                     />
-                    <Link to="/userprofile">
-                        <button
-                            type="submit"
-                            className={classes.btn}
-                            disabled={btnDisabled}
-                        >
-                            Log in
-                        </button>{" "}
-                    </Link>
+                    <button
+                        type="submit"
+                        className={classes.btn}
+                        disabled={btnDisabled}
+                    >
+                        Log in
+                    </button>
                     <p className={classes.break}>OR</p>
                 </form>
                 <div className={classes.login__socials}>
-                    <div className={classes["login__socials--google"]}>
+                    <button className={classes["login__socials--google"]}
+                        onClick={() => window.open(`${process.env.REACT_APP_BACKEND}/auth/google`, '_self')}
+                    >
                         <FaGoogle />
-                    </div>
-                    <div className={classes["login__socials--github"]}>
+                    </button>
+                    <button className={classes["login__socials--github"]}
+                        onClick={() => window.open(`${process.env.REACT_APP_BACKEND}/auth/github`, '_self')}
+                    >
                         <FaGithub />
-                    </div>
+                    </button>
                 </div>
             </Card>
             <FadeOut />
