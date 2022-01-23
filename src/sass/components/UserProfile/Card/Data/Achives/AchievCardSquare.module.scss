@@ -1,0 +1,38 @@
+@import "./../../../../../config.scss";
+
+.square {
+    position: relative;
+    transform: rotate(45deg);
+    width: 8rem;
+    height: 8rem;
+    background-color: #17365080;
+    border: 1px solid #17365080;
+    box-sizing: border-box;
+    box-shadow: inset -3px -3px 7px #255680, inset 4px 4px 5px #0e2537;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: -0.6rem;
+        left: -0.6rem;
+        margin: 1.2rem;
+        background-color: #1d2124;
+        border: 3px solid $color__grey--light;
+        width: 6rem;
+        height: 6rem;
+    }
+
+    &::after {
+        font-family: "Font Awesome 5 Free";
+        font-weight: 700;
+        content: "";
+        font-size: 4.5rem;
+        position: absolute;
+        top: 0.4rem;
+        left: 0.4rem;
+        margin: 1.2rem;
+        color: rgba($color__secondary--light, 0.5);
+        transform: rotate(-45deg);
+        z-index: 100;
+    }
+}

@@ -56,7 +56,7 @@ function Warning() {
                         </span>
                     </h3>
                     <div className={classes.warning__buttons}>
-                        <Link to="/quickgame">
+                        <Link to="/game">
                             <Button
                                 className={styles.btn__blue}
                                 type="submit"

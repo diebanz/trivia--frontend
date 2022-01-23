@@ -107,6 +107,7 @@ function CardUserProfileUser() {
 			</div>
 		</section>
 	);
+
 }
 
 export default CardUserProfileUser;
