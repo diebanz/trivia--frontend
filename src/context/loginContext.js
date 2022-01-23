@@ -10,8 +10,10 @@ export default function Auth({children}) {
 
   useEffect(() => {
     (async()=>{
-      const res = await axios.get('http://localhost:3003/test', {withCredentials: true})
-      if(res.data) setIsLoggedIn(res.data)
+      try{
+        const res = await axios.get('http://localhost:3003/auth/check', {withCredentials: true})
+        if(res.data.message === 'success') setIsLoggedIn(res.data)
+    }catch(err){console.error(err)}
     })();
   }, []);
   

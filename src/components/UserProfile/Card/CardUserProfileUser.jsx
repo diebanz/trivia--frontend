@@ -3,11 +3,13 @@ import axios from 'axios';
 
 import {FaEdit} from 'react-icons/fa';
 
+import { useAuth } from '../../../context/loginContext.js';
 import {flags} from '../../../common/flags.js';
 import {validation} from '../../../common/inputValidation.js';
 import classes from './../../../sass/components/UserProfile/Card/CardUser.module.scss';
 
 function CardUserProfileUser() {
+	const [currentUser] = useAuth();
 	const [data, setData] = useState();
 	const [nat, setNat] = useState();
 	const [username, setUsername] = useState();
@@ -17,7 +19,7 @@ function CardUserProfileUser() {
 
 	useEffect(() => {
 		(async () => {
-			const response = await axios.get(`${process.env.REACT_APP_BACKEND}/user/tobi`);
+			const response = await axios.get(`${process.env.REACT_APP_BACKEND}/user/${currentUser}`);
 			if (response.data.message === 'success') {
 				setData(response.data.payload);
 				setUsername(response.data.payload.username);
@@ -33,7 +35,7 @@ function CardUserProfileUser() {
 	const flagChangeHandler = async key => {
 		try {
 			selectRef.current.style.visibility = 'collapse';
-			const update = await axios.patch(`${process.env.REACT_APP_BACKEND}/user/tobi`, {updates: {nat: key}});
+			const update = await axios.patch(`${process.env.REACT_APP_BACKEND}/user/${currentUser}`, {updates: {nat: key}});
 			setNat(data.nat);
 		} catch (err) {}
 	};
