@@ -26,7 +26,7 @@ function CardUserProfileUser() {
 				setEmail(response.data.payload.email ? response.data.payload.email : 'enter your email here');
 			}
 		})();
-	}, [nat]);
+	}, [currentUser, nat]);
 
 	const inputChangeHandler = ({name, value}) => {
 		name === 'username' ? setUsername(value) : setEmail(value);

@@ -13,7 +13,7 @@ function LogSquare() {
     const navigate = useNavigate();
 
     const logoutHandler = async() => {
-        const res = await axios.get(`${process.env.REACT_APP_BACKEND}/auth/logout`);
+        const res = await axios.get(`${process.env.REACT_APP_BACKEND}/auth/logout`, {withCredentials: true});
         if(res.data.message === 'logged out') {
             setIsLoggedIn(null);
             navigate('/');
@@ -22,12 +22,12 @@ function LogSquare() {
 
     return (
         <div>
-            <div className={classes.login__square} onClick={logoutHandler}>
+            <div className={classes.login__square} onClick={isLoggedIn ? logoutHandler : navigate('/login')}>
                 <FaSignInAlt
                     className={
                         isLoggedIn
-                            ? classes.login__icon
-                            : classes.logout__icon
+                            ? classes.logout__icon
+                            : classes.login__icon
                     }
                 />
             </div>
