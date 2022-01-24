@@ -37,10 +37,10 @@ function LogIn() {
                 </Link>
                 <div className={classes.login__text}>
                     <h3 className="heading heading__3">
-                        You need to be logged in to play like A true warrior!
+                        {'You need to be logged in to play like A true warrior!'}
                     </h3>
                     <p className={classes.break}>
-                        No worries, we will register you on the way
+                        {'No worries, we will register you on the way'}
                     </p>
                 </div>
                 <form onSubmit={submitHandler}>
@@ -49,7 +49,7 @@ function LogIn() {
                         type="email"
                         name="text"
                         value={email}
-                        placeholder="Please, write your email"
+                        placeholder="put your email here"
                         onChange={updateInputHandler}
                     />
                     <button

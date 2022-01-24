@@ -31,13 +31,13 @@ function App() {
                     />
 
                     <Route
-                        path="/dashboard"
-                        element={ isLoggedIn ? <UserProfile /> : <Navigate to='/login' />}
+                        path="/login"
+                        element={ isLoggedIn ? <Navigate to='/dashboard'  /> : <LogIn />}
                     />
 
                     <Route
-                        path="/login"
-                        element={ isLoggedIn ? <Navigate to='/dashboard'  /> : <LogIn />}
+                        path="/dashboard"
+                        element={ isLoggedIn ? <UserProfile /> : <Navigate to='/login' />}
                     />
 
                     <Route
@@ -48,6 +48,11 @@ function App() {
                     <Route
                         path="/game"
                         element={<Game />}
+                    />
+
+                    <Route
+                        path="/about"
+                        element={<h1>about here</h1>}
                     />
 
                     <Route
