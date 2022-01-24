@@ -3,13 +3,16 @@ import axios from "axios";
 
 import { FaEdit } from "react-icons/fa";
 
+import FileUpload from './FileUpload'
 import { flags } from "../../../common/flags.js";
 import classes from "./../../../sass/components/UserProfile/Card/CardUser.module.scss";
 
 function CardUserProfileUser() {
    const [data, setData] = useState();
+   const [image, setImage] = useState();
    const [nat, setNat] = useState();
    const selectRef = useRef();
+   const changeImage = useRef()
 
    useEffect(() => {
       (async () => {
@@ -18,6 +21,11 @@ function CardUserProfileUser() {
          );
          if (response.data.message === "success")
             setData(response.data.payload);
+
+         const image = await axios.get(
+            `${process.env.REACT_APP_BACKEND}/user/tobi/image`
+         );
+         setImage(image)
       })();
    }, [nat]);
 
@@ -39,6 +47,13 @@ function CardUserProfileUser() {
       selectRef.current.style.visibility = "visible";
    };
 
+   const openModal = () => {
+       changeImage.current.style.visibility = "visible";
+   }
+   const closeModal = () => {
+      changeImage.current.style.visibility = "hidden";
+   };
+
    return (
       <section className={classes.profile__user}>
          <div className={classes["profile__user--piccontainer"]}>
@@ -46,10 +61,32 @@ function CardUserProfileUser() {
                className={classes["profile__user--pic"]}
                style={{
                   background: `url(${
-                     data && data.img
+                     image
                   }) center / cover no-repeat`,
                }}
+               onClick={openModal}
             >
+               {/* {<!-- The Modal -->} */}
+               <section
+                  className={classes["profile__user--modal"]}
+                  ref={changeImage}
+               >
+                  {/* {<!-- Modal content -->} */}
+                  <div
+                     className={classes["profile__user--modal__modalContent"]}
+                  >
+                     <h2>Change your Image here</h2>
+                     <FileUpload />
+                     <span
+                        className={classes["profile__user--modal__close"]}
+                        ref={changeImage}
+                        onClick={closeModal}
+                     >
+                        &times;
+                     </span>
+                  </div>
+               </section>
+
                <div
                   className={classes["profile__user--pic__flag"]}
                   style={{
