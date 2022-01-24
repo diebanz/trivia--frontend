@@ -5,9 +5,6 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 export default function Auth({ children }) {
-<<<<<<< HEAD
-    const [isLoggedIn, setIsLoggedIn] = useState("tobi");
-=======
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -19,23 +16,6 @@ export default function Auth({ children }) {
     }catch(err){console.error(err)}
     })();
   }, []);
-  
->>>>>>> floh
-
-    // useEffect(() => {
-    //     (async () => {
-    //         try {
-    //             const res = await axios.get(
-    //                 "http://localhost:3003/auth/check",
-    //                 { withCredentials: true }
-    //             );
-    //             if (res.data.message === "success")
-    //                 setIsLoggedIn(res.data.payload);
-    //         } catch (err) {
-    //             console.error(err);
-    //         }
-    //     })();
-    // }, []);
 
     return (
         <AuthContext.Provider value={[isLoggedIn, setIsLoggedIn]}>
