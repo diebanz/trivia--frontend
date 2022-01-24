@@ -13,53 +13,58 @@ import LogIn from "./pages/LogIn";
 import Warning from "./pages/Warning";
 import Game from "./pages/Game";
 import Footer from "./common/Footer";
+import Authors from "./pages/Authors";
 
 import "./sass/app.scss";
 
 function App() {
     const [isLoggedIn] = useAuth();
 
-
     return (
         <Router>
             <main>
                 <Routes>
-
                     <Route
                         path="/"
-                        element={ isLoggedIn ? <Navigate to='/dashboard' /> : <Home />}
+                        element={
+                            isLoggedIn ? <Navigate to="/dashboard" /> : <Home />
+                        }
                     />
 
                     <Route
                         path="/login"
-                        element={ isLoggedIn ? <Navigate to='/dashboard'  /> : <LogIn />}
+                        element={
+                            isLoggedIn ? (
+                                <Navigate to="/dashboard" />
+                            ) : (
+                                <LogIn />
+                            )
+                        }
                     />
 
                     <Route
                         path="/dashboard"
-                        element={ isLoggedIn ? <UserProfile /> : <Navigate to='/login' />}
+                        element={
+                            isLoggedIn ? (
+                                <UserProfile />
+                            ) : (
+                                <Navigate to="/login" />
+                            )
+                        }
                     />
 
-                    <Route
-                        path="/warning"
-                        element={<Warning />}
-                    />
+                    <Route path="/warning" element={<Warning />} />
 
-                    <Route
-                        path="/game"
-                        element={<Game />}
-                    />
+                    <Route path="/game" element={<Game />} />
 
-                    <Route
-                        path="/about"
-                        element={<h1>about here</h1>}
-                    />
+                    <Route path="/about" element={<Authors />} />
 
                     <Route
                         path="*"
-                        element={<Navigate to={isLoggedIn ? '/dashboard' : '/'} />} 
+                        element={
+                            <Navigate to={isLoggedIn ? "/dashboard" : "/"} />
+                        }
                     />
-
                 </Routes>
             </main>
             <Footer />
