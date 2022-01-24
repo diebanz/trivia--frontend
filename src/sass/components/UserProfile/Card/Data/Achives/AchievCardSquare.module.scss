@@ -2,13 +2,10 @@
 
 .square {
     position: relative;
-    transform: rotate(45deg);
-    width: 8rem;
-    height: 8rem;
-    background-color: #17365080;
-    border: 1px solid #17365080;
-    box-sizing: border-box;
-    box-shadow: inset -3px -3px 7px #255680, inset 4px 4px 5px #0e2537;
+    font-size: 4.5rem;
+    color: rgba($color__secondary--light, 0.5);
+    transform: rotate(-45deg);
+    z-index: 100;
 
     &::before {
         content: "";
@@ -23,16 +20,17 @@
     }
 
     &::after {
-        font-family: "Font Awesome 5 Free";
-        font-weight: 700;
         content: "";
-        font-size: 4.5rem;
         position: absolute;
         top: 0.4rem;
         left: 0.4rem;
         margin: 1.2rem;
-        color: rgba($color__secondary--light, 0.5);
-        transform: rotate(-45deg);
-        z-index: 100;
+        transform: rotate(45deg);
+        width: 8rem;
+        height: 8rem;
+        background-color: #17365080;
+        border: 1px solid #17365080;
+        box-sizing: border-box;
+        box-shadow: inset -3px -3px 7px #255680, inset 4px 4px 5px #0e2537;
     }
 }

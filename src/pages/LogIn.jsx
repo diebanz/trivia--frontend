@@ -12,13 +12,15 @@ function LogIn() {
     const [email, setEmail] = useState("");
     const [btnDisabled, setBtnDisabled] = useState(true);
 
-
     const updateInputHandler = (event) => {
         setBtnDisabled(true);
 
-        if (event.target.value.match(
-            /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
-        )) setBtnDisabled(false);
+        if (
+            event.target.value.match(
+                /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i
+            )
+        )
+            setBtnDisabled(false);
 
         setEmail(event.target.value);
     };
@@ -60,15 +62,27 @@ function LogIn() {
                     <p className={classes.break}>OR</p>
                 </form>
                 <div className={classes.login__socials}>
-                    <button className={classes["login__socials--google"]}
-                        onClick={() => window.open(`${process.env.REACT_APP_BACKEND}/auth/google`, '_self')}
+                    <button
+                        className={classes["login__socials--google"]}
+                        onClick={() =>
+                            window.open(
+                                `${process.env.REACT_APP_BACKEND}/auth/google`,
+                                "_self"
+                            )
+                        }
                     >
-                        <FaGoogle />
+                        <FaGoogle className={classes["login__socials--icon"]} />
                     </button>
-                    <button className={classes["login__socials--github"]}
-                        onClick={() => window.open(`${process.env.REACT_APP_BACKEND}/auth/github`, '_self')}
+                    <button
+                        className={classes["login__socials--github"]}
+                        onClick={() =>
+                            window.open(
+                                `${process.env.REACT_APP_BACKEND}/auth/github`,
+                                "_self"
+                            )
+                        }
                     >
-                        <FaGithub />
+                        <FaGithub className={classes["login__socials--icon"]} />
                     </button>
                 </div>
             </Card>
