@@ -7,6 +7,7 @@ import { useAuth } from '../../../context/loginContext.js';
 import {flags} from '../../../common/flags.js';
 import {validation} from '../../../common/inputValidation.js';
 import classes from './../../../sass/components/UserProfile/Card/CardUser.module.scss';
+import FileUpload from './FileUpload'
 
 function CardUserProfileUser() {
 	const [currentUser] = useAuth();
@@ -16,6 +17,8 @@ function CardUserProfileUser() {
 	const [email, setEmail] = useState();
 	const [edit, setEdit] = useState(false);
 	const selectRef = useRef();
+	const [image, setImage] = useState();
+	const changeImage = useRef()
 
 	useEffect(() => {
 		(async () => {
@@ -25,6 +28,8 @@ function CardUserProfileUser() {
 				setUsername(response.data.payload.username);
 				setEmail(response.data.payload.email ? response.data.payload.email : 'enter your email here');
 			}
+			const image = await axios.get(`${process.env.REACT_APP_BACKEND}/user/tobi/image`);
+			setImage(image)
 		})();
 	}, [currentUser, nat]);
 
@@ -108,6 +113,87 @@ function CardUserProfileUser() {
 		</section>
 	);
 
+  //  const openModal = () => {
+  //      changeImage.current.style.visibility = "visible";
+  //  }
+  //  const closeModal = () => {
+  //     changeImage.current.style.visibility = "hidden";
+  //  };
+
+  //  return (
+  //     <section className={classes.profile__user}>
+  //        <div className={classes["profile__user--piccontainer"]}>
+  //           <div
+  //              className={classes["profile__user--pic"]}
+  //              style={{
+  //                 background: `url(${
+  //                    image
+  //                 }) center / cover no-repeat`,
+  //              }}
+  //              onClick={openModal}
+  //           >
+  //              {/* {<!-- The Modal -->} */}
+  //              <section
+  //                 className={classes["profile__user--modal"]}
+  //                 ref={changeImage}
+  //              >
+  //                 {/* {<!-- Modal content -->} */}
+  //                 <div
+  //                    className={classes["profile__user--modal__modalContent"]}
+  //                 >
+  //                    <h2>Change your Image here</h2>
+  //                    <FileUpload />
+  //                    <span
+  //                       className={classes["profile__user--modal__close"]}
+  //                       ref={changeImage}
+  //                       onClick={closeModal}
+  //                    >
+  //                       &times;
+  //                    </span>
+  //                 </div>
+  //              </section>
+
+  //              <div
+  //                 className={classes["profile__user--pic__flag"]}
+  //                 style={{
+  //                    background: `url('https://flagcdn.com/64x48/${
+  //                       data && data.nat
+  //                    }.png') no-repeat`,
+  //                 }}
+  //                 onClick={openFlagsHandler}
+  //              >
+  //                 <div className={classes.selectFlag} ref={selectRef}>
+  //                    {Object.keys(flags).map((flag, i) => (
+  //                       <label key={flag}>
+  //                          <input
+  //                             type="radio"
+  //                             name="nat"
+  //                             value={flag}
+  //                             onChange={() => flagChangeHandler(flag)}
+  //                             title="test"
+  //                             style={{
+  //                                background: `url(${flags[flag]}) center / cover no-repeat`,
+  //                             }}
+  //                          ></input>
+  //                       </label>
+  //                    ))}
+  //                 </div>
+  //              </div>
+  //           </div>
+  //           <div className={classes["profile__user--statcontainer"]}>
+  //              <div className={classes["profile__user--recentachiev"]}>
+  //                 Warmed up!
+  //              </div>
+  //              <div className={classes["profile__user--currentrank"]}>
+  //                 {/* {data && data.} */}
+  //              </div>
+  //           </div>
+  //        </div>
+  //        <div className={classes["profile__user--iconcontainer"]}>
+  //           <FaEdit className={classes["profile__user--icon"]} />
+  //        </div>
+  //     </section>
+  //  );
 }
 
 export default CardUserProfileUser;
