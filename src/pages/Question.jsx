@@ -10,12 +10,13 @@ function Question() {
             <Card>
                 <div className={classes.question}>Question</div>
                 <div className={classes.question__container}>
-                    <QuestionAnswer title="A" />
-                    <QuestionAnswer title="B" />
+                    <QuestionAnswer letter="A" />
+
+                    <QuestionAnswer letter="B" />
                 </div>
                 <div className={classes.question__container}>
-                    <QuestionAnswer title="C" />
-                    <QuestionAnswer title="D" />
+                    <QuestionAnswer letter="C" />
+                    <QuestionAnswer letter="D" />
                 </div>
             </Card>
             <FadeOut />
