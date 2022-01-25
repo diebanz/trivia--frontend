@@ -1,133 +1,122 @@
-@import "./../../../config.scss";
-.flagSelection {
-   visibility: collapse;
-   position: relative;
-   bottom: -110%;
-   width: 800%;
-   height: 800%;
-   padding: 1rem;
-   overflow-y: scroll;
-   background: rgba($color__primary--dark, 0.6);
+@import './../../../config.scss';
 
-   label {
-      background: none;
-      padding: .5rem;
-      input {
-         appearance: none;
-         width: 10%;
-         height: 10%;
-         cursor: pointer;
-      }
-   }
-}
 .profile__user {
-   padding: 1rem;
-   display: flex;
-   justify-content: space-between;
-   align-items: flex-start;
-   border-radius: 1rem;
+	padding: 1rem;
+	display: flex;
+	height: 25%;
+	align-items: flex-start;
+	justify-content: space-between;
+	border-radius: 1rem;
 
-   &--piccontainer,
-   &--namecontainer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 1rem;
-   }
+	&--piccontainer,
+	&--namecontainer {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 1rem;
+	}
 
-   &--pic {
-      width: 16rem;
-      height: 16rem;
-      border-radius: 50%;
-      position: relative;
-      // background-color: #fff;
-      // background-position: center;
-      // background-size: cover;
-      // background-repeat: no-repeat;
-      box-shadow: 0.2rem 0.2rem 0.2rem $color__primary--dark;
+	&--pic {
+		width: 16rem;
+		height: 16rem;
+		border-radius: 50%;
+		position: relative;
+		// background-color: #fff;
+		// background-position: center;
+		// background-size: cover;
+		// background-repeat: no-repeat;
+		box-shadow: 0.2rem 0.2rem 0.2rem $color__primary--dark;
 
-      &__flag {
-         position: absolute;
-         bottom: -10%;
-         left: -10%;
-         width: 40%;
-         height: 30%;
-      }
+		&__flag {
+			position: absolute;
+			bottom: -10%;
+			left: -10%;
+			width: 40%;
+			height: 30%;
 
-    }
-    &--modal {
-       visibility: hidden; 
-       width: 100vw;
-       height: 100vh;
-       position: fixed;
-       z-index: 1; 
-       top: 50%;
-       left: 50%;
-       right: auto;
-       bottom: auto;
-       margin-right: -50%;
-       transform: translate(-50%, -50%);
-       background-color: rgb(0, 0, 0); /* Fallback color */
-       background-color: rgba(0, 0, 0, 0.65);
+			.flagSelection {
+				visibility: collapse;
+				position: relative;
+				bottom: -110%;
+				width: 800%;
+				height: 800%;
+				padding: 1rem;
+				overflow-y: scroll;
+				background: rgba($color__primary--dark, 0.6);
 
-       &__modalContent {
-           background-color: $color__secondary--light;
-           margin: auto;
-           padding: 20px;
-           border: 1px solid #888;
-           width: 80%; 
-       }
-       &__close {
-          color: #aaaaaa;
-          position: fixed;
-          top: 0%;
-          right: 13%;
-          font-size: 28px;
-          font-weight: bold;
-          cursor: pointer;
-}
-    }
+				label {
+					background: none;
+					padding: 0.5rem;
+					input {
+						appearance: none;
+						width: 10%;
+						height: 10%;
+						cursor: pointer;
+					}
+				}
+			}
+		}
 
-   &--year,
-   &--recentachiev,
-   &--currentrank {
-      text-align: center;
-      color: #fff;
-      font-size: 2rem;
-      background-color: rgba($color__grey--dark, 0.4);
-      padding: 1.5rem;
-      margin-top: 1rem;
-      border-radius: 1rem;
-      box-shadow: 0.2rem 0.2rem 0.2rem $color__primary--dark;
-   }
+		&__modal {
+			visibility: collapse;
+			width: 300%;
+			height: 200%;
+			position: relative;
+			z-index: 1;
+			bottom: -110%;
+			left: -10%;
+			background: rgba($color__primary--dark, 0.6);
 
-   &--namecontainer {
-      width: 60%;
-      align-items: stretch;
-   }
+			// &__modalContent {
+			// 	background-color: $color__secondary--light;
+			// 	margin: auto;
+			// 	padding: 20px;
+			// 	border: 1px solid #888;
+			// 	width: 80%;
+			// }
+		}
+	}
 
-   &--name,
-   &--email {
-      width: 100%;
-      background-color: rgba($color__secondary--light, 0.8);
-      color: $color__primary--dark;
-      font-size: 2.2rem;
-      padding: 1rem;
-      margin: 1rem 0;
-      border-radius: 1rem;
-      box-shadow: 0.2rem 0.2rem 0.2rem $color__primary--dark;
-   }
+	&--year,
+	&--recentachiev,
+	&--currentrank {
+		text-align: center;
+		color: #fff;
+		font-size: 2rem;
+		background-color: rgba($color__grey--dark, 0.4);
+		padding: 1.5rem;
+		margin-top: 1rem;
+		border-radius: 1rem;
+		box-shadow: 0.2rem 0.2rem 0.2rem $color__primary--dark;
+	}
 
-   &--statcontainer {
-      display: flex;
-      justify-content: space-between;
-      padding: 1rem 0;
-      margin: 1rem 0;
-   }
+	&--namecontainer {
+		width: 60%;
+		align-items: stretch;
+	}
 
-   &--icon {
-      color: $color__secondary--light;
-      font-size: 2.5rem;
-      cursor: pointer;
-   }
+	&--name,
+	&--email {
+		width: 100%;
+		background-color: rgba($color__secondary--light, 0.8);
+		color: $color__primary--dark;
+		font-size: 2.2rem;
+		padding: 1rem;
+		margin: 1rem 0;
+		border-radius: 1rem;
+		box-shadow: 0.2rem 0.2rem 0.2rem $color__primary--dark;
+	}
+
+	&--statcontainer {
+		display: flex;
+		justify-content: space-between;
+		padding: 1rem 0;
+		margin: 1rem 0;
+	}
+
+	&--icon {
+		color: $color__secondary--light;
+		font-size: 2.5rem;
+		cursor: pointer;
+	}
 }

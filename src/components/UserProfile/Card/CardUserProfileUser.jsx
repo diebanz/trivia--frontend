@@ -17,6 +17,7 @@ function CardUserProfileUser() {
 	const [email, setEmail] = useState();
 	const [edit, setEdit] = useState(false);
 	const selectRef = useRef();
+	const uploadRef = useRef();
 	const [image, setImage] = useState();
 	const changeImage = useRef()
 
@@ -45,20 +46,47 @@ function CardUserProfileUser() {
 		} catch (err) {}
 	};
 
-	const openFlagsHandler = () => {
-		if (selectRef.current.style.visibility === 'visible') return (selectRef.current.style.visibility = 'collapse');
+	const openFlagsHandler = e => {
+		e.stopPropagation();
+		if (selectRef.current.style.visibility === 'visible') return selectRef.current.style.visibility = 'collapse';
+		uploadRef.current.style.visibility = 'collapse';
 		selectRef.current.style.visibility = 'visible';
 	};
+
+	const openImageUpload = e => {
+		e.stopPropagation();
+    if (uploadRef.current.style.visibility === 'visible') return uploadRef.current.style.visibility = 'collapse';
+		selectRef.current.style.visibility = 'collapse';
+		uploadRef.current.style.visibility = 'visible';
+	}
 
 	return (
 		<section className={classes.profile__user}>
 			<div className={classes['profile__user--piccontainer']}>
+{/* PIC */}
 				<div
 					className={classes['profile__user--pic']}
 					style={{
+						cursor: edit ? 'pointer' : 'default',
+						pointerEvents: edit ? 'auto' : 'none',
 						background: `url(${data && data.img}) center / cover no-repeat`,
 					}}
+					onClick={e => openImageUpload(e)}
 				>
+					<div
+							className={classes['profile__user--pic__modal'] }
+							ref = {uploadRef}
+						>
+							<FileUpload />
+							{/* <span
+								className={classes["profile__user--modal__close"]}
+								ref={changeImage}
+								onClick={openImageUpload}
+							>
+								&times;
+							</span> */}
+						</div>
+{/* FLAGS */}
 					<div
 						className={classes['profile__user--pic__flag']}
 						style={{
@@ -66,8 +94,9 @@ function CardUserProfileUser() {
 							pointerEvents: edit ? 'auto' : 'none',
 							background: `url('https://flagcdn.com/64x48/${data && data.nat}.png') center / cover no-repeat`,
 						}}
-						onClick={openFlagsHandler}
+						onClick={e => openFlagsHandler(e)}
 					>
+						
 						<div className={classes.flagSelection} ref={selectRef}>
 							{Object.keys(flags).map((flag, i) => (
 								<label key={flag}>
@@ -113,12 +142,6 @@ function CardUserProfileUser() {
 		</section>
 	);
 
-  //  const openModal = () => {
-  //      changeImage.current.style.visibility = "visible";
-  //  }
-  //  const closeModal = () => {
-  //     changeImage.current.style.visibility = "hidden";
-  //  };
 
   //  return (
   //     <section className={classes.profile__user}>

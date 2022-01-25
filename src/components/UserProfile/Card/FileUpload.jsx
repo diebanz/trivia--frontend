@@ -1,28 +1,31 @@
-import React, { Fragment, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
+
+import { useAuth } from "../../../context/loginContext";
 
 
 const FileUpload = () => {
-   
+   const [currentUser] = useAuth();
    const [file, setFile] = useState("");
-   const [filename, setFilename] = useState("choose file");
-   const [uploadedFile, setUploadedFile] = useState({});
+   // const [filename, setFilename] = useState("choose file");
+   // const [uploadedFile, setUploadedFile] = useState({});
 
    const fileHandler = (e) => {
 
       setFile(e.target.files[0]);
-      setFilename(e.target.files[0].name);
+      // setFilename(e.target.files[0].name);
    };
 
    const submitFile = async (e) => {
       e.preventDefault();
       const formData = new FormData();
       formData.append("userImg", file);
-      console.log(file);
+      console.log('appended file:',file);
+      console.log('form data:',formData);
 
       try {
          const newImage = await axios.post(
-            `${process.env.REACT_APP_BACKEND}/user/tobi/upload`,
+            `${process.env.REACT_APP_BACKEND}/user/${currentUser}/upload`,
             formData,
             {
                headers: {
@@ -30,28 +33,27 @@ const FileUpload = () => {
                },
             }
          );
-         const { fileName, filePath } = newImage.data;
-         console.log(newImage.data);
-         setUploadedFile({ fileName, filePath });
+         if(newImage.data.message !== 'profile image uploaded') console.log('not uploaded')
+         // const { fileName, filePath } = newImage.data;
+         // console.log(newImage.data);
+         // setUploadedFile({ fileName, filePath });
       } catch (err) {
          console.log(err);
       }
    };
 
    return (
-      <Fragment>
+      <>
+         <h2>{'Change your Image here'}</h2>
          <form onSubmit={submitFile}>
-            <div>
-               <label htmlFor="customFile">
-                  <p>new Image:</p>
-               </label>
+            <label htmlFor="customFile">
+               
                <input type="file" id="customFile" onChange={fileHandler} />
-            </div>
-
+            </label>
             <input type="submit" value="upload new image" />
          </form>
 
-         {uploadedFile ? (
+         {/* {uploadedFile ? (
             <div>
                <h3>{uploadedFile.fileName}</h3>
                <img
@@ -60,8 +62,8 @@ const FileUpload = () => {
                   alt={uploadedFile.fileName}
                />
             </div>
-         ) : null}
-      </Fragment>
+         ) : null} */}
+      </>
    );
 };
 

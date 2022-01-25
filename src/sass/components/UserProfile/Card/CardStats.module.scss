@@ -3,11 +3,13 @@
 .profile__stats {
     margin: 1rem;
     text-align: center;
+    height: 75%;
 
     &--titles {
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
+        height: 5rem;
     }
 
     &--paragraph {
@@ -33,6 +35,7 @@
         background-color: $color__primary--light;
         border-bottom-left-radius: 1rem;
         border-bottom-right-radius: 1rem;
+        height: 95%;
     }
 }
 
