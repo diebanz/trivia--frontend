@@ -9,8 +9,8 @@ import {validation} from '../../../common/inputValidation.js';
 import classes from './../../../sass/components/UserProfile/Card/CardUser.module.scss';
 import FileUpload from './FileUpload'
 
-function CardUserProfileUser() {
-	const [currentUser] = useAuth();
+export default function CardUserProfileUser() {
+	const [currentUser, setCurrentUser] = useAuth();
 	const [data, setData] = useState();
 	const [nat, setNat] = useState();
 	const [username, setUsername] = useState();
@@ -19,7 +19,10 @@ function CardUserProfileUser() {
 	const selectRef = useRef();
 	const uploadRef = useRef();
 	const [image, setImage] = useState();
-	const changeImage = useRef()
+
+	useEffect(() => {
+		setEdit(false);
+	}, []);
 
 	useEffect(() => {
 		(async () => {
@@ -29,10 +32,19 @@ function CardUserProfileUser() {
 				setUsername(response.data.payload.username);
 				setEmail(response.data.payload.email ? response.data.payload.email : 'enter your email here');
 			}
-			const image = await axios.get(`${process.env.REACT_APP_BACKEND}/user/tobi/image`);
-			setImage(image)
 		})();
 	}, [currentUser, nat]);
+
+	useEffect(() => {
+		(async () => {
+			const imageResponse = await axios.get(`${process.env.REACT_APP_BACKEND}/user/${currentUser}/image`, {withCredentials: true});
+				const b64Response = btoa(imageResponse.data);
+				const profileImage = document.createElement('img');
+				profileImage.src = 'data:image/png;base64,'+b64Response;
+				setImage(profileImage.src);
+		})();
+	}, [currentUser]);
+
 
 	const inputChangeHandler = ({name, value}) => {
 		name === 'username' ? setUsername(value) : setEmail(value);
@@ -69,7 +81,7 @@ function CardUserProfileUser() {
 					style={{
 						cursor: edit ? 'pointer' : 'default',
 						pointerEvents: edit ? 'auto' : 'none',
-						background: `url(${data && data.img}) center / cover no-repeat`,
+						background: `url(${image && image.data}) center / cover no-repeat`,
 					}}
 					onClick={e => openImageUpload(e)}
 				>
@@ -114,6 +126,7 @@ function CardUserProfileUser() {
 					</div>
 				</div>
 			</div>
+{/* INPUTS */}
 			<div className={classes['profile__user--namecontainer']}>
 				<div className={classes['profile__user--name']}>
 					<input
@@ -122,7 +135,7 @@ function CardUserProfileUser() {
 						value={username}
 						readOnly={edit ? false : true}
 						onChange={e => inputChangeHandler(e.target)}
-						onBlur={e => validation(e.target)}
+						onBlur={e => validation(e.target, currentUser, setCurrentUser)}
 					/>
 				</div>
 				<div className={classes['profile__user--email']}>
@@ -132,12 +145,12 @@ function CardUserProfileUser() {
 						value={email}
 						readOnly={edit ? false : true}
 						onChange={e => inputChangeHandler(e.target)}
-						onBlur={e => validation(e.target)}
+						onBlur={e => validation(e.target, currentUser, setCurrentUser)}
 					/>
 				</div>
 			</div>
 			<div className={classes['profile__user--iconcontainer']}>
-				<FaEdit className={classes['profile__user--icon']} style={{color: edit ? 'green' : 'red'}} onClick={() => setEdit(!edit)} />
+				<FaEdit className={classes['profile__user--icon']} style={{color: edit ? 'lime' : 'red'}} title={'Edit profile'} onClick={() => setEdit(!edit)} />
 			</div>
 		</section>
 	);
@@ -218,5 +231,3 @@ function CardUserProfileUser() {
   //     </section>
   //  );
 }
-
-export default CardUserProfileUser;

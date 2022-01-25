@@ -44,12 +44,12 @@ function LogIn() {
                     </p>
                 </div>
                 <form onSubmit={submitHandler}>
-                    <label htmlFor="">Your email</label>
+                    <label htmlFor="">{'Your email'}</label>
                     <input
                         type="email"
                         name="text"
                         value={email}
-                        placeholder="put your email here"
+                        placeholder="enter your email"
                         onChange={updateInputHandler}
                     />
                     <button
