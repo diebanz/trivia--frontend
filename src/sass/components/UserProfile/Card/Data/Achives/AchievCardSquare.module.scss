@@ -8,6 +8,9 @@
     border: 1px solid #17365080;
     box-sizing: border-box;
     box-shadow: inset -3px -3px 7px #255680, inset 4px 4px 5px #0e2537;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &::before {
         content: "";

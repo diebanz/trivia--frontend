@@ -109,10 +109,15 @@
         box-shadow: 0.2rem 0.2rem 0.2rem $color__primary--dark;
 
         & input {
+            padding: 1rem;
             border: none;
             background-color: transparent;
             font-size: 2rem;
             color: $color__primary--dark;
+
+            &:focus {
+                outline: none;
+            }
         }
     }
 
