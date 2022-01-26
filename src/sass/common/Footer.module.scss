@@ -30,6 +30,11 @@
             border-radius: 0.5rem;
             background-color: $color__primary--light;
             box-shadow: 3px 3px 3px #5aacc1, -3px -3px 3px #7ef2ff;
+
+            &:hover {
+                cursor: pointer;
+                box-shadow: -3px -3px 3px #5aacc1, 3px 3px 3px #7ef2ff;
+            }
         }
     }
 }
