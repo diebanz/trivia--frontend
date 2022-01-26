@@ -14,7 +14,6 @@ import Warning from "./pages/Warning";
 import Game from "./pages/Game";
 import Footer from "./common/Footer";
 import Authors from "./pages/Authors";
-import Question from "./pages/Question";
 
 import "./sass/app.scss";
 
@@ -54,11 +53,9 @@ function App() {
                         }
                     />
 
-                    <Route path="/warning" element={<Warning />} />
-
                     <Route path="/game" element={<Game />} />
 
-                    <Route path="/question" element={<Question />} />
+                    <Route path="/warning" element={<Warning />} />
 
                     <Route path="/about" element={<Authors />} />
 
