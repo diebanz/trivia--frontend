@@ -10,46 +10,83 @@ import {useGame} from '../../context/gameContext';
 import styles from './../../sass/common/Button.module.scss';
 import classes from './../../sass/components/UserProfile/CardGameDashboard.module.scss';
 
+
 export default function CardGameDashboard() {
 	const [gameMode, setGameMode] = useState(false);
 	const [categories, setCategories] = useState([]);
 	const [selectedCategories, setSelectedCategories] = useGame([]);
 
+
 	const categorySelection = () => {
 		const quickCategories = [...selectedCategories];
 		for (let i = 0; quickCategories.length < 6; i++) {
 			const newCategory = categories[Math.floor(Math.random() * categories.length)];
-			console.log(newCategory)
 			if (!quickCategories.find(category => category === newCategory)) quickCategories.push(newCategory);
 		}
-		console.log(quickCategories)
 		return setSelectedCategories(quickCategories);
 	};
-	// fetch all categories
+
 	useEffect(() => {
 		(async () => {
 			try{
-				const response = await axios.get('https://opentdb.com/api_category.php');
-				setCategories(response.data.trivia_categories);
+				const response = (await axios.get('https://opentdb.com/api_category.php')).data.trivia_categories;
+				response.forEach(category =>
+					category.name = category.name.startsWith('Entertainment:')
+					|| category.name.startsWith('Science:')
+					? category.name.slice(category.name.indexOf(' ') + 1)
+					: category.name
+				);
+				console.log(response)
+				setCategories(response);
 			}catch(err){console.log(err)}
 		})();
 	}, []);
+
 
 	return (
 		<section className={classes.dashboard}>
 			<div className={classes.dashboard__game}>
 				<Square title='trivia' className={classes.dashboard__square} />
+				{/* <DashboardItem 
+					title = {'Game Timer'}
+					type = {'radio'}
+					values = {[
+						{name: 'off'},
+						{name: '10min'},
+						{name: '20min'},
+						{name: '30min'},
+					]}
+				/>
+				<DashboardItem 
+					title = {'Question Timer'}
+					type = {'radio'}
+					values = {[
+						{name: 'on'},
+						{name: 'off'}
+					]}
+				/> */}
 				<DashboardItem
 					title={'Game Mode'}
 					values={[
-						{name: 'quick', click: setGameMode},
-						{name: 'custom', click: setGameMode},
+						{name: 'quick', tooltip: 'get random categories', change: setGameMode},
+						{name: 'custom', tooltip: 'choose your own categories', change: setGameMode},
+						// {name: 'fun', change: setGameMode},
 					]}
+					type ={'radio'}
 				/>
-				{gameMode && (
+				{gameMode === 'custom' && categories && (
 					<DashboardItem
-						title={'Select categories:'}
-						values={['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5', 'Category 6']}
+						title={'Select categories'}
+						values={[
+							{name: 'Category 1'},
+							{name: 'Category 2'},
+							{name: 'Category 3'},
+							{name: 'Category 4'},
+							{name: 'Category 5'},
+							{name: 'Category 6'},
+						]}
+						type ={'select'}
+						categories = {categories}
 					/>
 				)}
 			</div>

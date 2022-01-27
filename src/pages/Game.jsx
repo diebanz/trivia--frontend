@@ -7,81 +7,86 @@ import { useGame } from "../context/gameContext";
 import classes from './../sass/pages/Game.module.scss';
 
 export default function Game() {
-	const [selectedCategories, setSelectedCategories] = useGame();
-	const [questions, setQuestions] = useState([]);
+	const [selectedCategories] = useGame();
+	// const [isLoading, setIsLoading] = useState(true);
+	const [score, setScore] = useState(0);
+	const [questions, setQuestions] = useState(null);
 	const [answers, setAnswers] = useState([[], [], [], [], [], []]);
 	const [showQuestion, setShowQuestion] = useState(false);
 
 	// fetch questions
   useEffect(() => { 
+		const fetchedQuestions = [];
 		try{
-			selectedCategories.forEach((category, i) => {
-				(async () => {
-					const easy = (
-						await axios(`https://opentdb.com/api.php?amount=2&category=${category.id}&difficulty=easy`)
-						).data.results;
+			selectedCategories.forEach(async(category, i) => {
 
-					const medium = (
-						await axios(`https://opentdb.com/api.php?amount=2&category=${category.id}&difficulty=medium`)
+				const easy = (
+					await axios(`https://opentdb.com/api.php?amount=2&category=${category.id}&difficulty=easy`)
 					).data.results;
 
-					const hard = (
-						await axios(`https://opentdb.com/api.php?amount=1&category=${category.id}&difficulty=hard`)
-					).data.results;
-					setQuestions([...questions, questions[i] = [...easy, ...medium, ...hard]]);
-				})();
+				const medium = (
+					await axios(`https://opentdb.com/api.php?amount=2&category=${category.id}&difficulty=medium`)
+				).data.results;
+
+				const hard = (
+					await axios(`https://opentdb.com/api.php?amount=1&category=${category.id}&difficulty=hard`)
+				).data.results;
+
+				fetchedQuestions[i] = [...easy, ...medium, ...hard];
 			});
 		}catch(err){console.log(err)}
-  }, []);
+		setQuestions(fetchedQuestions);
+  }, [selectedCategories]);
 
+	// calc score
+	useEffect(() => {
+		let calcScore = 0;
+		const correctCats = [];
+		answers.forEach(category => {
+			category.forEach((question, qIndex) => {
+				if(question) calcScore += (qIndex + 1) * 100;
+				if(question && qIndex === 4 && correctCats.length < 6)
+					correctCats.push(100 + correctCats.length * 100);
+				if(correctCats.length === 6) correctCats[5] += 11;
+			})
+		})
+		for (let i in correctCats) calcScore += correctCats[i];
+		calcScore += correctCats.reduce((sum, cat) => sum + cat, 0);
+		setScore(calcScore);
+	}, [answers]);
 
 
 	return (
 		<>
 			<h1>GAME</h1>
-			<p>score : 0</p>
-			{questions
-			&& questions[0]
-			&& questions[0].length === 5
-			&& questions[1]
-			&& questions[1].length === 5
-			&& questions[2]
-			&& questions[2].length === 5
-			&& questions[3]
-			&& questions[3].length === 5
-			&& questions[4]
-			&& questions[4].length === 5
-			&& questions[5]
-			&& questions[5].length === 5
-			&& !showQuestion &&
+			<p>score : {score}</p>
+			{(questions && questions.length === 6 && !showQuestion &&
 				selectedCategories.map((category, i) => {
 					return (
 						<div key = {`${category}${i}`}>
 							<h3>{category.name}</h3>
-							{questions[i].reverse().map((question, j) => {
-								j = questions[i].length -1 - j;
-								let state = false;
-								if(j === 0 && !answers[i].length) state = true;
-								if(j !== 0 && answers[i].length === j && answers[i][j-1] === true) state = true;
-								return (
-									<button
-										key = {`${question}${j}`}
-										disabled = {!state}
-										onClick = {() => setShowQuestion(question)}
-									>
-										{(j + 1) * 100}
-									</button>
-								)
-							})}
+							{
+								questions[i].map((question, j) => {
+									j = questions[i].length -1 - j;
+									let state = false;
+									if(j === 0 && !answers[i].length) state = true;
+									if(j !== 0 && answers[i].length === j && answers[i][j-1] === true) state = true;
+									return (
+										<button
+											key = {`${question}${j}`}
+											disabled = {!state}
+											onClick = {() => setShowQuestion(question)}
+										>
+											{(j + 1) * 100}
+										</button>
+									)
+								})
+							}
 						</div>
 					)
 				})
-			}
+			) || <h1>wait for data!</h1>}
 			{showQuestion && <Question question = {showQuestion} answer = {setAnswers} reset = {setShowQuestion} />}
 		</>
 	)
 }
-
-
-
-
