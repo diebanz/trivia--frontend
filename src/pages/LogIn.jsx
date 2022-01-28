@@ -48,7 +48,7 @@ function LogIn() {
                     <input
                         type="email"
                         name="text"
-                        value={email}
+                        value={email || ''}
                         placeholder="enter your email"
                         onChange={updateInputHandler}
                     />

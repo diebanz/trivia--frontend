@@ -10,13 +10,17 @@ export default function Game() {
 	const [selectedCategories] = useGame();
 	// const [isLoading, setIsLoading] = useState(true);
 	const [score, setScore] = useState(0);
-	const [questions, setQuestions] = useState(null);
+	const [isLoading, setIsLoading] = useState(true);
+	const [questions, setQuestions] = useState([]);
 	const [answers, setAnswers] = useState([[], [], [], [], [], []]);
 	const [showQuestion, setShowQuestion] = useState(false);
 
+	useEffect(() => {
+		if(questions.length === 6) setIsLoading(false)
+	}, [questions]);
+
 	// fetch questions
   useEffect(() => { 
-		const fetchedQuestions = [];
 		try{
 			selectedCategories.forEach(async(category, i) => {
 
@@ -31,11 +35,15 @@ export default function Game() {
 				const hard = (
 					await axios(`https://opentdb.com/api.php?amount=1&category=${category.id}&difficulty=hard`)
 				).data.results;
-
-				fetchedQuestions[i] = [...easy, ...medium, ...hard];
+				// console.log(i, easy.length, medium.length, hard.length, questions.length)
+				// setQuestions([...questions, questions[i] = [...easy, ...medium, ...hard]]);
+				const promise = new Promise((res, rej) =>{
+					if(easy && medium && hard && questions.length === i)
+						res(setQuestions([...questions, questions[i] = [...easy, ...medium, ...hard]]))
+				});
+				promise.then(() => console.log('message'))
 			});
 		}catch(err){console.log(err)}
-		setQuestions(fetchedQuestions);
   }, [selectedCategories]);
 
 	// calc score
@@ -60,13 +68,13 @@ export default function Game() {
 		<>
 			<h1>GAME</h1>
 			<p>score : {score}</p>
-			{(questions && questions.length === 6 && !showQuestion &&
+			{/* {isLoading && <h1>loading</h1>} */}
+			{!isLoading && questions.length === 6 &&
 				selectedCategories.map((category, i) => {
 					return (
 						<div key = {`${category}${i}`}>
 							<h3>{category.name}</h3>
-							{
-								questions[i].map((question, j) => {
+							{questions[i].map((question, j) => {
 									j = questions[i].length -1 - j;
 									let state = false;
 									if(j === 0 && !answers[i].length) state = true;
@@ -85,7 +93,7 @@ export default function Game() {
 						</div>
 					)
 				})
-			) || <h1>wait for data!</h1>}
+			}
 			{showQuestion && <Question question = {showQuestion} answer = {setAnswers} reset = {setShowQuestion} />}
 		</>
 	)

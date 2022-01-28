@@ -6,14 +6,17 @@ import Button from './../../common/Button';
 import DashboardItem from './Dashboard/DashboardItem';
 import Square from './../../common/Square';
 import {useGame} from '../../context/gameContext';
+import { useAuth } from '../../context/loginContext';
 
 import styles from './../../sass/common/Button.module.scss';
 import classes from './../../sass/components/UserProfile/CardGameDashboard.module.scss';
 
 
 export default function CardGameDashboard() {
+	const [currentUser] = useAuth();
 	const [gameMode, setGameMode] = useState(false);
 	const [categories, setCategories] = useState([]);
+	const [settings, setSettings] = useState();
 	const [selectedCategories, setSelectedCategories] = useGame([]);
 
 
@@ -29,15 +32,16 @@ export default function CardGameDashboard() {
 	useEffect(() => {
 		(async () => {
 			try{
-				const response = (await axios.get('https://opentdb.com/api_category.php')).data.trivia_categories;
-				response.forEach(category =>
+				const categoryResponse = (await axios.get('https://opentdb.com/api_category.php')).data.trivia_categories;
+				categoryResponse.forEach(category =>
 					category.name = category.name.startsWith('Entertainment:')
 					|| category.name.startsWith('Science:')
 					? category.name.slice(category.name.indexOf(' ') + 1)
 					: category.name
 				);
-				console.log(response)
-				setCategories(response);
+				setCategories(categoryResponse);
+				const settingsResponse = (await axios.get(`${process.env.REACT_APP_BACKEND}/user/${currentUser}`))
+				setSettings(settingsResponse);
 			}catch(err){console.log(err)}
 		})();
 	}, []);
@@ -66,7 +70,7 @@ export default function CardGameDashboard() {
 					]}
 				/> */}
 				<DashboardItem
-					title={'Game Mode'}
+					title={{name: 'Game Mode', shortName: 'gameMode'}}
 					values={[
 						{name: 'quick', tooltip: 'get random categories', change: setGameMode},
 						{name: 'custom', tooltip: 'choose your own categories', change: setGameMode},
@@ -76,14 +80,14 @@ export default function CardGameDashboard() {
 				/>
 				{gameMode === 'custom' && categories && (
 					<DashboardItem
-						title={'Select categories'}
+						title={{name: 'Select categories', shortName: 'categories'}}
 						values={[
-							{name: 'Category 1'},
-							{name: 'Category 2'},
-							{name: 'Category 3'},
-							{name: 'Category 4'},
-							{name: 'Category 5'},
-							{name: 'Category 6'},
+							{name: 'Category 1', DBValue: [settings.categories[0]]},
+							{name: 'Category 2', DBValue: [settings.categories[1]]},
+							{name: 'Category 3', DBValue: [settings.categories[2]]},
+							{name: 'Category 4', DBValue: [settings.categories[3]]},
+							{name: 'Category 5', DBValue: [settings.categories[4]]},
+							{name: 'Category 6', DBValue: [settings.categories[5]]},
 						]}
 						type ={'select'}
 						categories = {categories}
