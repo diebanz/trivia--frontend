@@ -21,11 +21,11 @@ export default function CardUserProfileUser() {
 	const selectRef = useRef();
 	const uploadRef = useRef();
 	const [image, setImage] = useState();
-
+	
 	useEffect(() => {
 		setEdit(false);
 	}, []);
-
+	
 	useEffect(() => {
 		(async () => {
 			const response = (await axios.get(`${process.env.REACT_APP_BACKEND}/user/${currentUser}`)).data;
@@ -33,19 +33,20 @@ export default function CardUserProfileUser() {
 				setData(response.payload);
 				setUsername(response.payload.username);
 				setEmail(response.payload.email ? response.payload.email : 'enter your email');
+				setImage(response.payload.img)
 			}
 		})();
-	}, [currentUser, nat]);
-
+	}, [currentUser, nat, image]);
+	
 	const inputChangeHandler = ({name, value}) => {
 		name === 'username' ? setUsername(value) : setEmail(value);
 	};
-
+	
 	const flagChangeHandler = async key => {
 		try {
 			selectRef.current.style.visibility = 'collapse';
 			const update = (await axios.patch(`${process.env.REACT_APP_BACKEND}/user/${currentUser}`,
-				{updates: {nat: key}})).data.message;
+			{updates: {nat: key}})).data.message;
 			if(update === 'success') return setNat(data.nat);
 		} catch (err) {}
 	};
@@ -56,14 +57,14 @@ export default function CardUserProfileUser() {
 		uploadRef.current.style.visibility = 'collapse';
 		selectRef.current.style.visibility = 'visible';
 	};
-
+	
 	const openImageUpload = e => {
 		e.stopPropagation();
-    if (uploadRef.current.style.visibility === 'visible') return uploadRef.current.style.visibility = 'collapse';
+		if (uploadRef.current.style.visibility === 'visible') return uploadRef.current.style.visibility = 'collapse';
 		selectRef.current.style.visibility = 'collapse';
 		uploadRef.current.style.visibility = 'visible';
 	}
-
+	
 
 	return (
 		<section className={classes.profile__user}>
@@ -74,7 +75,7 @@ export default function CardUserProfileUser() {
 					style={{
 						cursor: edit ? 'pointer' : 'default',
 						pointerEvents: edit ? 'auto' : 'none',
-						background: `url(${image && image.data}) center / cover no-repeat`,
+						background: `url(${image || ''}) center / cover no-repeat`,
 					}}
 					onClick={e => openImageUpload(e)}
 				>

@@ -7,21 +7,15 @@ import { useAuth } from "../../../context/loginContext";
 const FileUpload = () => {
    const [currentUser] = useAuth();
    const [file, setFile] = useState("");
-   // const [filename, setFilename] = useState("choose file");
-   // const [uploadedFile, setUploadedFile] = useState({});
 
    const fileHandler = (e) => {
-
       setFile(e.target.files[0]);
-      // setFilename(e.target.files[0].name);
    };
 
    const submitFile = async (e) => {
       e.preventDefault();
       const formData = new FormData();
       formData.append("userImg", file);
-      console.log('appended file:',file);
-      console.log('form data:',formData);
 
       try {
          const newImage = await axios.post(
@@ -33,10 +27,8 @@ const FileUpload = () => {
                },
             }
          );
-         if(newImage.data.message !== 'profile image uploaded') console.log('not uploaded')
-         // const { fileName, filePath } = newImage.data;
-         // console.log(newImage.data);
-         // setUploadedFile({ fileName, filePath });
+         console.log(newImage)
+         if(newImage.data.message !== 'profile image uploaded') console.log(newImage.data.message)
       } catch (err) {
          console.log(err);
       }
@@ -52,17 +44,6 @@ const FileUpload = () => {
             </label>
             <input type="submit" value="upload new image" />
          </form>
-
-         {/* {uploadedFile ? (
-            <div>
-               <h3>{uploadedFile.fileName}</h3>
-               <img
-                  style={{ width: "100%" }}
-                  src={uploadedFile.filePath}
-                  alt={uploadedFile.fileName}
-               />
-            </div>
-         ) : null} */}
       </>
    );
 };

@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
+import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
 
-import {Link} from 'react-router-dom';
 import Button from './../../common/Button';
 import DashboardItem from './Dashboard/DashboardItem';
 import Square from './../../common/Square';
@@ -13,11 +13,13 @@ import classes from './../../sass/components/UserProfile/CardGameDashboard.modul
 
 
 export default function CardGameDashboard() {
+	const navigate = useNavigate();
 	const [currentUser] = useAuth();
+	const [selectedCategories, setSelectedCategories] = useGame([]);
+	
 	const [gameMode, setGameMode] = useState(false);
 	const [categories, setCategories] = useState([]);
 	const [settings, setSettings] = useState();
-	const [selectedCategories, setSelectedCategories] = useGame([]);
 
 
 	const categorySelection = () => {
@@ -26,7 +28,8 @@ export default function CardGameDashboard() {
 			const newCategory = categories[Math.floor(Math.random() * categories.length)];
 			if (!quickCategories.find(category => category === newCategory)) quickCategories.push(newCategory);
 		}
-		return setSelectedCategories(quickCategories);
+		setSelectedCategories(quickCategories);
+		return navigate('/game');
 	};
 
 	useEffect(() => {
@@ -96,9 +99,7 @@ export default function CardGameDashboard() {
 			</div>
 			<div className={classes.dashboard__button}>
 				<div className={classes['dashboard__line--2']}></div>
-				<Link to='/game'>
 					<Button className={styles.btn__blue} title1='Play!' onClick={categorySelection} />
-				</Link>
 			</div>
 		</section>
 	);
