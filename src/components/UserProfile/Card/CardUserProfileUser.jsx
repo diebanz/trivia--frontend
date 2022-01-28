@@ -1,6 +1,7 @@
 import {useState, useEffect, useRef} from 'react';
 import axios from 'axios';
 
+
 import {FaEdit} from 'react-icons/fa';
 
 import { useAuth } from '../../../context/loginContext.js';
@@ -8,6 +9,7 @@ import {flags} from '../../../common/flags.js';
 import {validation} from '../../../common/inputValidation.js';
 import classes from './../../../sass/components/UserProfile/Card/CardUser.module.scss';
 import FileUpload from './FileUpload'
+
 
 export default function CardUserProfileUser() {
 	const [currentUser, setCurrentUser] = useAuth();
@@ -31,19 +33,12 @@ export default function CardUserProfileUser() {
 				setData(response.data.payload);
 				setUsername(response.data.payload.username);
 				setEmail(response.data.payload.email ? response.data.payload.email : 'enter your email here');
+				setImage(response.data.payload.img)
 			}
 		})();
 	}, [currentUser, nat]);
 
-	useEffect(() => {
-		(async () => {
-			const imageResponse = await axios.get(`${process.env.REACT_APP_BACKEND}/user/${currentUser}/image`, {withCredentials: true});
-				const b64Response = btoa(imageResponse.data);
-				const profileImage = document.createElement('img');
-				profileImage.src = 'data:image/png;base64,'+b64Response;
-				setImage(profileImage.src);
-		})();
-	}, [currentUser]);
+	
 
 
 	const inputChangeHandler = ({name, value}) => {
@@ -73,87 +68,101 @@ export default function CardUserProfileUser() {
 	}
 
 	return (
-		<section className={classes.profile__user}>
-			<div className={classes['profile__user--piccontainer']}>
-{/* PIC */}
-				<div
-					className={classes['profile__user--pic']}
-					style={{
-						cursor: edit ? 'pointer' : 'default',
-						pointerEvents: edit ? 'auto' : 'none',
-						background: `url(${image && image.data}) center / cover no-repeat`,
-					}}
-					onClick={e => openImageUpload(e)}
-				>
-					<div
-							className={classes['profile__user--pic__modal'] }
-							ref = {uploadRef}
-						>
-							<FileUpload />
-							{/* <span
+      <section className={classes.profile__user}>
+         <div className={classes["profile__user--piccontainer"]}>
+            {/* PIC */}
+            <div
+               className={classes["profile__user--pic"]}
+               style={{
+               	cursor: edit ? 'pointer' : 'default',
+               	pointerEvents: edit ? 'auto' : 'none',
+               	background: `url(${image}) center / cover no-repeat`,
+               }}
+              
+               onClick={(e) => openImageUpload(e)}
+            >
+            
+            <div
+               className={classes["profile__user--pic__modal"]}
+               ref={uploadRef}
+            >
+               <FileUpload />
+               {/* <span
 								className={classes["profile__user--modal__close"]}
 								ref={changeImage}
 								onClick={openImageUpload}
 							>
 								&times;
 							</span> */}
-						</div>
-{/* FLAGS */}
-					<div
-						className={classes['profile__user--pic__flag']}
-						style={{
-							cursor: edit ? 'pointer' : 'default',
-							pointerEvents: edit ? 'auto' : 'none',
-							background: `url('https://flagcdn.com/64x48/${data && data.nat}.png') center / cover no-repeat`,
-						}}
-						onClick={e => openFlagsHandler(e)}
-					>
-						
-						<div className={classes.flagSelection} ref={selectRef}>
-							{Object.keys(flags).map((flag, i) => (
-								<label key={flag}>
-									<input
-										type='radio'
-										name='nation'
-										value={flag}
-										onChange={() => flagChangeHandler(flag)}
-										title={flags[flag].name}
-										style={{background: `url(${flags[flag].url.small}) center / cover no-repeat`}}
-									></input>
-								</label>
-							))}
-						</div>
-					</div>
-				</div>
-			</div>
-{/* INPUTS */}
-			<div className={classes['profile__user--namecontainer']}>
-				<div className={classes['profile__user--name']}>
-					<input
-						type='text'
-						name='username'
-						value={username}
-						readOnly={edit ? false : true}
-						onChange={e => inputChangeHandler(e.target)}
-						onBlur={e => validation(e.target, currentUser, setCurrentUser)}
-					/>
-				</div>
-				<div className={classes['profile__user--email']}>
-					<input
-						type='text'
-						name='email'
-						value={email}
-						readOnly={edit ? false : true}
-						onChange={e => inputChangeHandler(e.target)}
-						onBlur={e => validation(e.target, currentUser, setCurrentUser)}
-					/>
-				</div>
-			</div>
-			<div className={classes['profile__user--iconcontainer']}>
-				<FaEdit className={classes['profile__user--icon']} style={{color: edit ? 'lime' : 'red'}} title={'Edit profile'} onClick={() => setEdit(!edit)} />
-			</div>
-		</section>
-	);
+            </div>
+            {/* FLAGS */}
+            <div
+               className={classes["profile__user--pic__flag"]}
+               style={{
+                  cursor: edit ? "pointer" : "default",
+                  pointerEvents: edit ? "auto" : "none",
+                  background: `url('https://flagcdn.com/64x48/${
+                     data && data.nat
+                  }.png') center / cover no-repeat`,
+               }}
+               onClick={(e) => openFlagsHandler(e)}
+            >
+               <div className={classes.flagSelection} ref={selectRef}>
+                  {Object.keys(flags).map((flag, i) => (
+                     <label key={flag}>
+                        <input
+                           type="radio"
+                           name="nation"
+                           value={flag}
+                           onChange={() => flagChangeHandler(flag)}
+                           title={flags[flag].name}
+                           style={{
+                              background: `url(${flags[flag].url.small}) center / cover no-repeat`,
+                           }}
+                        ></input>
+                     </label>
+                  ))}
+               </div>
+            </div>
+            </div>
+         </div>
+         {/* INPUTS */}
+         <div className={classes["profile__user--namecontainer"]}>
+            <div className={classes["profile__user--name"]}>
+               <input
+                  type="text"
+                  name="username"
+                  value={username}
+                  readOnly={edit ? false : true}
+                  onChange={(e) => inputChangeHandler(e.target)}
+                  onBlur={(e) =>
+                     validation(e.target, currentUser, setCurrentUser)
+                  }
+               />
+            </div>
+            <div className={classes["profile__user--email"]}>
+               <input
+                  type="text"
+                  name="email"
+                  value={email}
+                  readOnly={edit ? false : true}
+                  onChange={(e) => inputChangeHandler(e.target)}
+                  onBlur={(e) =>
+                     validation(e.target, currentUser, setCurrentUser)
+                  }
+               />
+            </div>
+         </div>
+         <div className={classes["profile__user--iconcontainer"]}>
+            <FaEdit
+               className={classes["profile__user--icon"]}
+               style={{ color: edit ? "lime" : "red" }}
+               title={"Edit profile"}
+               onClick={() => setEdit(!edit)}
+            />
+         </div>
+      </section>
+   );
 
 
   //  return (
